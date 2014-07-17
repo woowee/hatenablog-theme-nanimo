@@ -1,0 +1,1612 @@
+@charset "utf-8";
+/*  import normalize */
+/*
+  Theme: nanimo
+  Author: wooweezoowee
+  Description:
+    はてな提供の、boilerplate がベース。
+    vim プラグインの previm が生成する html ページにインスパイアされてます。
+    - [hatena/Hatena-Blog-Themes] (git@github.com:hatena/Hatena-Blog-Themes.git)
+    - [kannokanno/previm ](git@github.com:kannokanno/previm.git)
+  Licensed under the MIT license.
+*/
+/*  import normalize */
+/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+/**
+ * Remove default margin.
+ */
+body {
+  margin: 0;
+}
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined in IE 8/9.
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+/**
+ * Address `[hidden]` styling not present in IE 8/9.
+ * Hide the `template` element in IE, Safari, and Firefox < 22.
+ */
+[hidden],
+template {
+  display: none;
+}
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background: transparent;
+}
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+a:active,
+a:hover {
+  outline: 0;
+}
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9, Safari 5, and Chrome.
+ */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+ */
+b,
+strong {
+  font-weight: bold;
+}
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+dfn {
+  font-style: italic;
+}
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari 5, and Chrome.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+/**
+ * Address styling not present in IE 8/9.
+ */
+mark {
+  background: #ff0;
+  color: #000;
+}
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9.
+ */
+img {
+  border: 0;
+}
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari 5.
+ */
+figure {
+  margin: 1em 40px;
+}
+/**
+ * Address differences between Firefox and other browsers.
+ */
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+/**
+ * Contain overflow in all browsers.
+ */
+pre {
+  overflow: auto;
+}
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10.
+ */
+button {
+  overflow: visible;
+}
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8+, and Opera
+ * Correct `select` style inheritance in Firefox.
+ */
+button,
+select {
+  text-transform: none;
+}
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+input {
+  line-height: normal;
+}
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box;
+}
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+/**
+ * Define consistent border, margin, and padding.
+ */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+/**
+ * 1. Correct `color` not being inherited in IE 8/9.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+/**
+ * Remove default vertical scrollbar in IE 8/9.
+ */
+textarea {
+  overflow: auto;
+}
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+optgroup {
+  font-weight: bold;
+}
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+/*  import mixin */
+.clearfix {
+  display: block;
+  *zoom: 1;
+}
+.clearfix:after {
+  display: block;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  content: ".";
+}
+.inline-block {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+.ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+/*  import variable */
+/* Background color */
+/* Background color */
+/* Base text color */
+/* Light text color */
+/* h1~h6 text color */
+/* h1~h6 text color */
+/* Link text color */
+/* Link text color(hover) */
+/* Link text color(hover) */
+/* Border color */
+/* Border color */
+/* button background */
+/* button hover backgroud */
+/* Common */
+html,
+body {
+  font-family: helvetica, arial, freesans, clean, sans-serif;
+  color: #333333;
+  background-color: #ffffff;
+  font-size: 14px;
+}
+.clearboth {
+  clear: both;
+}
+/* Anchor */
+a {
+  color: #1487bd;
+  text-decoration: none;
+}
+a:hover {
+  color: #0f5373;
+}
+a:visited {
+  color: #789dae;
+}
+.entry-date-tofooter .date a:hover {
+  text-decoration: underline;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #1c1c1c;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a,
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover,
+h1 a:visited,
+h2 a:visited,
+h3 a:visited,
+h4 a:visited,
+h5 a:visited,
+h6 a:visited {
+  color: #1c1c1c;
+  text-decoration: none;
+}
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover,
+h1 a:hover:hover,
+h2 a:hover:hover,
+h3 a:hover:hover,
+h4 a:hover:hover,
+h5 a:hover:hover,
+h6 a:hover:hover,
+h1 a:visited:hover,
+h2 a:visited:hover,
+h3 a:visited:hover,
+h4 a:visited:hover,
+h5 a:visited:hover,
+h6 a:visited:hover {
+  color: #0f5373 !important;
+}
+a.keyword {
+  text-decoration: none;
+  color: #333333;
+}
+a.keyword:hover.keyword {
+  text-decoration: underline !important;
+}
+/* Buttons */
+.btn {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  padding: 4px 10px 4px;
+  margin-bottom: 0;
+  line-height: 18px;
+  color: #333333;
+  background-color: #ffffff;
+  text-align: center;
+  vertical-align: middle;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-radius: 2px;
+  background-clip: padding-box;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  text-decoration: none !important;
+}
+.btn:hover {
+  background-color: #f5f5f5;
+  text-decoration: none !important;
+}
+.btn-small {
+  padding: 2px 10px !important;
+  font-size: 11px !important;
+}
+.btn-large {
+  padding: 13px 19px;
+  font-size: 17px;
+  line-height: normal;
+  font-weight: bold;
+}
+/* ヘッダ（グローバルヘッダ）
+  グローバルヘッダの中はiframeですが，
+  #globalheader-container に背景色や文字色を指定することでirameの中にも色が反映されます．
+*/
+#globalheader-container {
+  color: #999999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+}
+/* container */
+#container {
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  padding-top: 37px;
+}
+#container #content {
+  display: block;
+  *zoom: 1;
+}
+#container #content:after {
+  display: block;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  content: ".";
+}
+#container #top-editarea {
+  display: block;
+  *zoom: 1;
+}
+#container #top-editarea:after {
+  display: block;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  content: ".";
+}
+.globalheader-off #container {
+  padding-top: 0;
+}
+/* one col layout */
+#main {
+  width: 100%;
+  float: none;
+  padding: 3em 0 6em;
+}
+#box2 {
+  width: 100%;
+  float: none;
+}
+#box2-inner {
+  padding: 84px 0 0;
+  width: 960px;
+  display: block;
+  *zoom: 1;
+  overflow: hidden;
+}
+#box2-inner:after {
+  display: block;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  content: ".";
+}
+#box2 .hatena-module {
+  text-align: left;
+  padding-right: 20px;
+  width: 300px;
+  float: left;
+}
+#box2 .hatena-module:nth-child(3n+1) {
+  clear: both;
+}
+/* Header */
+/* Header > blog title >> page-index only */
+.page-index #blog-title {
+  margin: 0;
+  padding: 48px 0 2rem;
+}
+/* Header > blog title >> page-entry, -archive, -category */
+.page-entry #blog-title,
+.page-archive #blog-title,
+.page-category-category_name #blog-title,
+.page-entries-year-month-day #blog-title {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #cccccc;
+  /* to line up the blog title and breadcrump in a row */
+}
+.page-entry #blog-title #blog-title-inner h1#title,
+.page-archive #blog-title #blog-title-inner h1#title,
+.page-category-category_name #blog-title #blog-title-inner h1#title,
+.page-entries-year-month-day #blog-title #blog-title-inner h1#title {
+  display: inline;
+}
+/* Header > blog title >> settings for charactors format  */
+.page-index #blog-title #blog-title-inner #title {
+  font-size: 6.854rem;
+  text-align: center;
+  /* anchor */
+}
+.page-index #blog-title #blog-title-inner #title a {
+  color: #1c1c1c !important;
+  /* &:hover { color: @hover !important;  i think to need this link... */
+}
+.page-entry #blog-title,
+.page-archive #blog-title,
+.page-category-category_name #blog-title,
+.page-entries-year-month-day #blog-title {
+  /* for setting font size to deliemiter string '>' */
+  font-size: 0.618rem !important;
+}
+.page-entry #blog-title #blog-title-inner #title,
+.page-archive #blog-title #blog-title-inner #title,
+.page-category-category_name #blog-title #blog-title-inner #title,
+.page-entries-year-month-day #blog-title #blog-title-inner #title {
+  text-align: left;
+  font-size: 0.618rem;
+  font-weight: normal;
+  /* anchor */
+}
+.page-entry #blog-title #blog-title-inner #title a:hover,
+.page-archive #blog-title #blog-title-inner #title a:hover,
+.page-category-category_name #blog-title #blog-title-inner #title a:hover,
+.page-entries-year-month-day #blog-title #blog-title-inner #title a:hover {
+  text-decoration: underline;
+}
+/* Header > blog title >> description */
+.page-index #blog-description {
+  font-weight: normal;
+  font-size: 0.618rem;
+  margin: 0;
+  padding: 3px 0 42px;
+}
+.page-entry #blog-title #blog-title-inner #blog-description,
+.page-archive #blog-title #blog-title-inner #blog-description,
+.page-category-category_name #blog-title #blog-title-inner #blog-description,
+.page-entries-year-month-day #blog-title #blog-title-inner #blog-description {
+  display: none;
+}
+/* ヘッダ画像を設定したとき */
+.header-image-enable #title {
+  padding-top: 70px;
+}
+.header-image-enable #title,
+.header-image-enable #blog-description {
+  padding-left: 20px;
+}
+/* パンくず（カテゴリーページで表示されます） */
+#top-box {
+  margin: 10px auto 20px;
+  font-size: 90%;
+}
+#top-box .breadcrumb {
+  border: 1px solid #cccccc;
+  padding: 10px;
+}
+/* Entry */
+.entry {
+  position: relative;
+  margin-bottom: 100px;
+}
+/* Entry > entry header */
+.entry-header {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+/* Entry > entry title */
+.entry-title {
+  margin: 0;
+  padding: 0;
+  padding: 7px 0;
+  line-height: 1;
+  font-size: 2.618rem;
+}
+/* 日付 */
+.date {
+  display: inline-block;
+  font-size: 0.618rem;
+}
+.date a {
+  color: #999999;
+  text-decoration: none;
+}
+/* カテゴリ */
+.categories:before {
+  content: "tags:  ";
+  color: #999999;
+}
+.categories {
+  padding: 3px 0 1em 3rem;
+  text-indent: -3rem;
+  font-size: 0.618rem;
+}
+.categories a {
+  color: #999999;
+}
+.categories.no-categories {
+  margin: 0;
+}
+/* 「編集する」ボタン */
+.entry-header-menu {
+  position: absolute;
+  bottom: 0px;
+  left: -60px;
+}
+.entry-header-menu a {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  padding: 4px 10px 4px;
+  margin-bottom: 0;
+  line-height: 18px;
+  color: #333333;
+  background-color: #ffffff;
+  text-align: center;
+  vertical-align: middle;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-radius: 2px;
+  background-clip: padding-box;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  text-decoration: none !important;
+}
+.entry-header-menu a:hover {
+  background-color: #f5f5f5;
+  text-decoration: none !important;
+}
+/* entry-content の中の書式 */
+.entry-content {
+  /* font-size: @size; */
+  line-height: 1.7;
+  padding: 0;
+  padding: 14px 0 28px;
+}
+.entry-content .page-entry,
+.entry-content .page-archive,
+.entry-content .page-category-category_name,
+.entry-content .page-entries-year-month-day {
+  border-bottom: 1px solid #cccccc;
+}
+.entry-content p {
+  margin: 0 0 1em 0;
+}
+.entry-content img {
+  max-width: 100%;
+}
+.entry-content h1,
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6 {
+  margin: 1.3em 0 0.8em 0;
+  line-height: 1.5;
+}
+.entry-content h1 {
+  font-size: 4.236rem;
+}
+.entry-content h2 {
+  font-size: 2.618rem;
+}
+.entry-content h3 {
+  font-size: 1.618rem;
+}
+.entry-content h4 {
+  font-size: 1rem;
+}
+.entry-content h5 {
+  font-size: 1rem;
+}
+.entry-content h6 {
+  font-size: 1rem;
+}
+.entry-content table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 1em;
+}
+.entry-content table img {
+  max-width: none;
+}
+.entry-content table th,
+.entry-content table td {
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+}
+.entry-content table th {
+  background: #f5f5f5;
+}
+.entry-content blockquote:before {
+  position: absolute;
+  content: open-quote;
+  font-size: 32px;
+  font-weight: normal;
+  color: #999999;
+  top: -16px;
+  left: 8px;
+}
+.entry-content blockquote:after {
+  position: absolute;
+  content: close-quote;
+  font-size: 32px;
+  font-weight: normal;
+  color: #999999;
+  bottom: -32px;
+  right: 8px;
+}
+.entry-content blockquote {
+  position: relative;
+  quotes: "“" "”";
+  margin: 0 0 10px;
+  padding: 10px 28px;
+  background-color: #f7fbfc;
+}
+.entry-content blockquote p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.entry-content pre,
+.entry-content code {
+  font: 14px 'Bitstream Vera Sans Mono', 'Courier', monospace;
+}
+.entry-content pre {
+  margin: 0 0 10px;
+  padding: 20px;
+  padding: 6px 10px;
+  padding: 1rem 10px;
+  white-space: pre;
+  border-radius: 3px;
+}
+.entry-content pre > code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: 0;
+  background: transparent;
+}
+.entry-content code {
+  padding: 1px;
+  border: 1px solid #eaeaea;
+}
+.entry-content .code {
+  /* background-color: #f8f8f8; */
+  background-color: #383838;
+  color: #fff;
+}
+.entry-content .hatena-asin-detail li {
+  line-height: 1.4;
+}
+.entry-content a.entry-see-more {
+  float: right;
+}
+.entry-content a.entry-see-more:after {
+  content: "...";
+}
+/* entry-footer */
+.entry-footer {
+  margin-top: 1px;
+}
+.entry-footer-section {
+  /* wont use username and time. */
+  margin: 0;
+  font-size: 0.618rem;
+  color: #999999;
+  text-align: right;
+}
+.entry-footer-section .author.vcard,
+.entry-footer-section .entry-footer-time {
+  display: none;
+}
+.entry-footer-section a {
+  color: #999999;
+}
+.entry-footer-section .entry-date-to-entry-footer a:hover {
+  text-decoration: underline;
+}
+/* entried date, hide in .page-index only */
+.page-index .entry-footer-section {
+  display: none;
+}
+.social-buttons,
+.entry-footer-html {
+  margin: 10px 0;
+}
+/* Footnote */
+div.footnote {
+  padding: 35px 13px 0;
+  font-size: 0.618rem;
+}
+div.footnote .page-index {
+  border-top: none;
+}
+div.footnote .page-entry,
+div.footnote .page-archive,
+div.footnote .page-category-category_name,
+div.footnote .page-entries-year-month-day {
+  border-top: 1px solid #cccccc;
+}
+/* コメント */
+.comment-box {
+  padding: 68px 20px 0;
+}
+.comment-box ul {
+  list-style: none;
+  margin: 0 0 15px 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.comment-box li {
+  padding: 10px 0 10px 60px;
+  position: relative;
+}
+.comment-box .read-more-comments {
+  padding-left: 0;
+}
+.comment-box .hatena-id-icon {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 50px !important;
+  height: 50px !important;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-radius: 3px;
+  background-clip: padding-box;
+}
+.comment-user-name {
+  margin: 0 0 10px 0;
+  font-weight: bold;
+}
+.comment-content {
+  font-size: 0.618rem;
+  margin: 0 0 10px 0;
+  word-wrap: break-word;
+}
+.comment-content p {
+  margin: 0 0 10px 0;
+}
+.comment-metadata {
+  font-size: 0.382rem;
+  color: #999999;
+  margin: 0;
+  padding-bottom: 14px;
+}
+.comment-metadata a {
+  color: #999999;
+}
+.leave-comment-title {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  padding: 4px 10px 4px;
+  margin-bottom: 0;
+  line-height: 18px;
+  color: #333333;
+  background-color: #ffffff;
+  text-align: center;
+  vertical-align: middle;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-radius: 2px;
+  background-clip: padding-box;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  text-decoration: none !important;
+}
+.leave-comment-title:hover {
+  background-color: #f5f5f5;
+  text-decoration: none !important;
+}
+/* sidebar */
+#box2 {
+  font-size: 85%;
+  line-height: 1.5;
+}
+.hatena-module {
+  margin-bottom: 60px;
+}
+.hatena-module-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  border-bottom: 1px solid #cccccc;
+}
+.hatena-module-title a {
+  color: #333333;
+  text-decoration: none;
+}
+.hatena-module-title a:hover {
+  text-decoration: underline;
+}
+/* Profile module */
+#box2 img {
+  width: 48px;
+  height: 48px;
+}
+.hatena-module-body {
+  padding-left: 12px;
+  font-size: 0.618rem;
+}
+.hatena-module-profile .profile-icon {
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-radius: 50%;
+  background-clip: padding-box;
+}
+.my-module-profile {
+  width: 100% !important;
+  /* kill the style of hatena-module */
+  padding: 0 !important;
+  /* kill the style of hatena-module */
+  padding: 36px 0 !important;
+  /* kill the style of hatena-module */
+  margin: 0 !important;
+  /* kill the style of hatena-module */
+}
+.my-module-profile .hatena-module-body {
+  padding: 24px 0 24px;
+}
+.my-module-profile .profile-icon {
+  display: block;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-radius: 50%;
+  background-clip: padding-box;
+  margin: 0 auto;
+}
+.my-module-profile .profile-description {
+  padding: 0 12px;
+  font-size: 0.618rem;
+  text-align: center;
+  padding: 0 35%;
+}
+.my-module-profile .profile-description p {
+  margin-top: 0;
+}
+.my-module-profile .id-and-button {
+  position: relative;
+  padding: 0px;
+  margin: 5px 0;
+  /* add */
+}
+.my-module-profile .id-and-button .id {
+  display: inline;
+  font-size: 0.618rem;
+  font-weight: bold;
+}
+.my-module-profile .id-and-button .id a {
+  color: #333333;
+}
+.my-module-profile .id-and-button .hatena-follow-button-box {
+  display: inline !important;
+  text-align: center !important;
+}
+.my-module-profile .id-and-button .hatena-follow-button-box .hatena-follow-button {
+  display: initial !important;
+  float: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: initial !important;
+  border: none !important;
+  font-size: 14px;
+  line-height: initial !important;
+  transition: all 0 none !important;
+  transition-duration: 0 !important;
+  /* }} do NOT need hover */
+}
+.my-module-profile .id-and-button .hatena-follow-button-box .hatena-follow-button.subscribing,
+.my-module-profile .id-and-button .hatena-follow-button-box .hatena-follow-button.unsubscribing {
+  background: none !important;
+  float: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-weight: normal;
+}
+.my-module-profile .id-and-button .hatena-follow-button-box .hatena-follow-button.subscribing:hover,
+.my-module-profile .id-and-button .hatena-follow-button-box .hatena-follow-button.unsubscribing:hover {
+  color: #0f5373 !important;
+  border: none !important;
+  background: none !important;
+  /* do NOT need hover {{ */
+}
+.my-module-profile .id-and-button .hatena-follow-button-box .hatena-follow-button.subscribing:hover .foreground,
+.my-module-profile .id-and-button .hatena-follow-button-box .hatena-follow-button.unsubscribing:hover .foreground {
+  display: inline !important;
+}
+.my-module-profile .id-and-button .hatena-follow-button-box .hatena-follow-button.subscribing:hover .background,
+.my-module-profile .id-and-button .hatena-follow-button-box .hatena-follow-button.unsubscribing:hover .background {
+  display: none !important;
+}
+.my-module-profile .id-and-button .hatena-follow-button-box .hatena-follow-button .background {
+  display: none !important;
+}
+.my-module-profile .id-and-button .hatena-follow-button-box:after {
+  content: initial !important;
+}
+.my-module-profile .id-and-button .subscription-count-box {
+  float: none !important;
+  display: inline-block !important;
+}
+.my-module-profile .id-and-button .subscription-count-box .subscription-balloon {
+  display: none !important;
+}
+.my-module-profile .id-and-button .subscription-count-box .subscription-count {
+  padding: 0 !important;
+  display: inline !important;
+  float: none !important;
+  text-align: center;
+  border: none !important;
+}
+.my-module-profile .id-and-button .subscription-count-box .subscription-count:before {
+  content: " (";
+}
+.my-module-profile .id-and-button .subscription-count-box .subscription-count:after {
+  content: ")";
+}
+/* urllist module
+    リンク・最新記事・最近のコメント・月別アーカイブ・カテゴリモジュールは .hatena-urllist という共通の class が振られます
+*/
+.hatena-urllist {
+  list-style: none;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+.hatena-urllist li {
+  padding: 2px 0;
+  line-height: 1.5;
+}
+.hatena-urllist li a {
+  text-decoration: none;
+}
+.hatena-urllist li .urllist-item-inner.recent-entries-item-inner {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  /* Opera9,10対応 */
+  /* ref. http://qiita.com/ichikawa_0829/items/e0c364e74b5e22a7bc0d */
+}
+/* Search module */
+.hatena-module.hatena-module-search-box .search-form {
+  border: 1px solid #cccccc;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-radius: 3px;
+  background-clip: padding-box;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+}
+.hatena-module.hatena-module-search-box .search-module-input {
+  padding: 5px;
+  color: #333333;
+  background: none;
+  border: none;
+  outline: none;
+  height: 20px;
+  width: 90%;
+}
+.hatena-module.hatena-module-search-box .search-module-button {
+  width: 20px;
+  height: 20px;
+  background: transparent url(http://blog.hatena.ne.jp/images/theme/search.png) no-repeat right center;
+  border: none;
+  outline: none;
+  text-indent: -9999px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+.hatena-module.hatena-module-search-box .search-module-button:hover {
+  opacity: 0.85;
+  filter: alpha(opacity=85);
+}
+/* Search module > customized */
+#blog-title .searchbox-htn .hatena-module {
+  margin-bottom: 0.382rem !important;
+}
+#blog-title .searchbox-htn .search-form {
+  border: 1px solid #cccccc;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-radius: 3px;
+  background-clip: padding-box;
+  width: 25%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  margin-left: auto;
+}
+#blog-title .searchbox-htn .search-module-input {
+  padding: 5px;
+  color: #333333;
+  background: none;
+  border: none;
+  outline: none;
+  height: 20px;
+  width: 90%;
+}
+#blog-title .searchbox-htn .search-module-button {
+  width: 20px;
+  height: 20px;
+  background: transparent url(http://blog.hatena.ne.jp/images/theme/search.png) no-repeat right center;
+  border: none;
+  outline: none;
+  text-indent: -9999px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+#blog-title .searchbox-htn .search-module-button:hover {
+  opacity: 0.85;
+  filter: alpha(opacity=85);
+}
+/* Pager */
+.pager {
+  margin: 1em 0;
+  display: block;
+  *zoom: 1;
+}
+.pager:after {
+  display: block;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  content: ".";
+}
+.pager .pager-prev,
+.pager pager-next {
+  width: 45%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  /* Opera9,10対応 */
+  /* ref. http://qiita.com/ichikawa_0829/items/e0c364e74b5e22a7bc0d */
+}
+.pager .pager-prev {
+  float: right;
+  text-align: right;
+}
+.pager .pager-next {
+  float: left;
+  text-align: left;
+}
+.pager .pager-prev a:after {
+  content: "»";
+}
+.pager .pager-next a:before {
+  content: "«";
+}
+.pager .pager-arrow {
+  display: none;
+}
+/* Footer */
+#footer {
+  padding: 30px 0;
+  text-align: center;
+  color: #999999;
+  line-height: 1.5;
+  font-size: 80%;
+}
+#footer p {
+  margin: 0;
+}
+#footer a {
+  color: #999999;
+}
+/* About ページ */
+.page-about dt {
+  font-size: 14px;
+  font-weight: bold;
+  border-bottom: 1px solid #dfdfdf;
+  margin-bottom: 5px;
+}
+.page-about dd {
+  margin-left: 0;
+  margin-bottom: 30px;
+}
+/* archive ページ */
+body.page-archive {
+  font-size: 12px;
+}
+.page-archive .archive-entries .archive-entry {
+  margin-bottom: 3em;
+}
+.page-archive .archive-entries .entry-title {
+  font-size: 1.618rem;
+  padding: 0;
+}
+.page-archive .archive-entries .categories {
+  margin: 0 0 .5em;
+  font-size: 0.618rem;
+}
+.page-archive .archive-entries .entry-description {
+  margin: 0 0 1em;
+  line-height: 1.7em;
+  font-size: 14px;
+}
+.page-archive .archive-entries .date {
+  display: none;
+}
+/*  import media queries */
+/* Media Queries - Retina Display */
+@media (-webkit-min-device-pixel-ratio: 2) {
+  .hatena-module-search-box .search-module-button {
+    background: transparent url(http://blog.hatena.ne.jp/images/theme/search@2x.png) no-repeat right center;
+    background-size: 20px 20px;
+  }
+}
+/* Media Queries - Tablet */
+@media (min-width: 768px) and (max-width: 1024px) {
+  #container {
+    width: 724px;
+  }
+  #main {
+    width: 460px;
+  }
+  #box2 {
+    width: 245px;
+  }
+}
+/* Media Queries - Small Tablet & Smartphone */
+@media (max-width: 767px) {
+  #globalheader-container {
+    position: static;
+  }
+  #container {
+    width: 93.75%;
+    word-wrap: break-word;
+    overflow: hidden;
+  }
+  #main {
+    width: 100%;
+    float: none;
+  }
+  #box2 {
+    width: 100%;
+    float: none;
+  }
+  #box2-inner {
+    width: 100%;
+  }
+  .hatena-module {
+    width: 100%;
+    float: none;
+  }
+  .entry-header-menu {
+    top: -30px;
+    left: 0px;
+  }
+}
+/* Media Queries - Smartphone */
+/*
+  nanimo_gsc.css
+*/
+/* GOOGLE CUSTOME SEARCH ENGINE {{
+   ========================================================================== */
+/*
+  Theme: nanimo
+  Author: woowee
+  Description:
+    検索ボックスに、Google Custone Search Engine を使用したい場合に追加する
+    css。
+  Licensed under the MIT license.
+*/
+/* Settings --------------------------- */
+/* - Shape; "Rectangle" */
+/* - Layout; "Bottom" */
+/* Shape ------------------------------ */
+.gsc-control-cse,
+.gsc-control-searchbox-only {
+  /* margin: 0 !important; to set `margin-right` in Oval */
+  padding: 0 !important;
+}
+.gsc-control-cse form.gsc-search-box.gsc-search-box-tools,
+.gsc-control-searchbox-only form.gsc-search-box.gsc-search-box-tools {
+  /* just only disable the margin */
+  margin: 0 !important;
+}
+.gsc-control-cse form.gsc-search-box.gsc-search-box-tools table.gsc-search-box,
+.gsc-control-searchbox-only form.gsc-search-box.gsc-search-box-tools table.gsc-search-box {
+  margin: 0 !important;
+}
+.gsc-control-cse td.gsc-input,
+.gsc-control-searchbox-only td.gsc-input {
+  /* just only disable the margin */
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.gsc-control-cse td.gsc-input #gsc-iw-id1,
+.gsc-control-searchbox-only td.gsc-input #gsc-iw-id1 {
+  border: 1px solid #cccccc !important;
+}
+.gsc-control-cse td.gsc-search-button,
+.gsc-control-searchbox-only td.gsc-search-button {
+  display: none;
+  /* wont use original button */
+}
+.gsc-control-cse {
+  display: block !important;
+}
+.gsc-control-cse td.gsc-input #gsc-iw-id1 {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-radius: 2px;
+  background-clip: padding-box;
+}
+.gsc-control-searchbox-only {
+  /* margin: 0 !important; to set `margin-right` in Oval */
+  padding: 0 !important;
+  display: block !important;
+}
+.gsc-control-searchbox-only form.gsc-search-box.gsc-search-box-tools {
+  /* just only disable the margin */
+  margin: 0 !important;
+}
+.gsc-control-searchbox-only form.gsc-search-box.gsc-search-box-tools table.gsc-search-box {
+  margin: 0 !important;
+}
+.gsc-control-searchbox-only td.gsc-input {
+  /* just only disable the margin */
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.gsc-control-searchbox-only td.gsc-input #gsc-iw-id1 {
+  border: 1px solid #cccccc !important;
+}
+.gsc-control-searchbox-only td.gsc-search-button {
+  display: none;
+  /* wont use original button */
+}
+.gsc-control-searchbox-only td.gsc-input #gsc-iw-id1 {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-radius: 2px;
+  background-clip: padding-box;
+}
+/* Default of the display of the input filed */
+/* Button */
+#searchbox-btn {
+  display: none;
+}
+/* Layout ----------------------------- */
+.page-index #blog-title {
+  /* Layout=1,2,3 and 0; in any case, the search-box is put into the blog title */
+}
+.page-index #blog-title #search-box {
+  position: relative;
+  /* for the layout of the searchbox-btn in the case of "Oval" shape */
+  width: 30%;
+  margin-left: auto;
+}
+.page-index #blog-title #search-box {
+  height: auto;
+}
+.page-entry #blog-title #search-box,
+.page-archive #blog-title #search-box,
+.page-category-category_name #blog-title #search-box,
+.page-entries-year-month-day #blog-title #search-box {
+  margin: 0;
+  padding: 0;
+}
+.page-entry #blog-title #search-box #searchbox-ggl,
+.page-archive #blog-title #search-box #searchbox-ggl,
+.page-category-category_name #blog-title #search-box #searchbox-ggl,
+.page-entries-year-month-day #blog-title #search-box #searchbox-ggl {
+  margin: 0;
+  padding: 0;
+  margin-left: auto;
+  width: 100%;
+}
+.page-entry #search-box,
+.page-archive #search-box,
+.page-category-category_name #search-box,
+.page-entries-year-month-day #search-box {
+  position: relative;
+  width: 30%;
+  margin: 0 auto;
+}
+.page-entry #search-box #searchbox-ggl,
+.page-archive #search-box #searchbox-ggl,
+.page-category-category_name #search-box #searchbox-ggl,
+.page-entries-year-month-day #search-box #searchbox-ggl {
+  margin: 0 auto;
+}
+.page-entry #search-box,
+.page-archive #search-box,
+.page-category-category_name #search-box,
+.page-entries-year-month-day #search-box {
+  padding-top: 6px;
+}
+/* Defaults ( if you dont use javascript/jqery) */
+#top-editarea .gsc-control-cse,
+#top-editarea .gsc-control-searchbox-only {
+  padding: 6px 0;
+  width: 30%;
+  margin-left: auto;
+}
+#top-editarea .gsc-control-cse form.gsc-search-box.gsc-search-box-tools,
+#top-editarea .gsc-control-searchbox-only form.gsc-search-box.gsc-search-box-tools {
+  /* disable margin only */
+  margin: 0 !important;
+}
+#top-editarea .gsc-control-cse form.gsc-search-box.gsc-search-box-tools table.gsc-search-box,
+#top-editarea .gsc-control-searchbox-only form.gsc-search-box.gsc-search-box-tools table.gsc-search-box {
+  margin: 0 !important;
+}
+#top-editarea .gsc-control-cse td.gsc-input,
+#top-editarea .gsc-control-searchbox-only td.gsc-input {
+  /* disable margin only */
+  margin: 0 !important;
+  padding: 0 !important;
+}
+#top-editarea .gsc-control-cse td.gsc-input #gsc-iw-id1,
+#top-editarea .gsc-control-searchbox-only td.gsc-input #gsc-iw-id1 {
+  border: 1px solid #cccccc !important;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-radius: 2px;
+  background-clip: padding-box;
+}
+#top-editarea .gsc-control-cse td.gsc-search-button,
+#top-editarea .gsc-control-searchbox-only td.gsc-search-button {
+  /* doesn't use original button */
+  display: block;
+}
+#top-editarea .gsc-control-cse td.gsc-search-button input.gsc-search-button,
+#top-editarea .gsc-control-searchbox-only td.gsc-search-button input.gsc-search-button {
+  background-color: #333333 !important;
+  background-image: none !important;
+  border: none !important;
+  border: 1px solid #333333 !important;
+}
+#top-editarea .gsc-control-cse td.gsc-search-button input.gsc-search-button:hover,
+#top-editarea .gsc-control-searchbox-only td.gsc-search-button input.gsc-search-button:hover {
+  background-color: #999999 !important;
+  border: 1px solid #999999 !important;
+}
+/* }} GOOGLE CUSTOME SEARCH ENGINE
+   ========================================================================== */
