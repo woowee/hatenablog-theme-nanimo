@@ -61,7 +61,7 @@ $(function(){
     $("div#top-editarea").attr("id", "searchbox-ggl");
 
     // add button
-    $("#searchbox-ggl").after("<div id='searchbox-btn' title='讀懃ｴ｢繧ｳ繝ｳ繝医Ο繝ｼ繝ｫ繧貞ｱ暮幕'>");
+    $("#searchbox-ggl").after("<div id='searchbox-btn' title='検索コントロールを展開'>");
 
     // wrap search box module
     $("#searchbox-ggl, #searchbox-btn").wrapAll("<div id='search-box'>");
