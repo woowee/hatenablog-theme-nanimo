@@ -1,14 +1,14 @@
 .clearfix {
     display: block;
     *zoom: 1;
-  	&:after {
+      &:after {
         display: block;
         visibility: hidden;
         font-size: 0;
         height: 0;
         clear: both;
         content: ".";
-  	}
+      }
 }
 
 .inline-block {
@@ -81,4 +81,14 @@
 
 .translate(@x:0, @y:0) {
     transform: translate(@x, @y);
+}
+
+
+.ellipsis(@width) {
+    width: @width;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis; /* Opera9,10対応 */
+    /* ref. http://qiita.com/ichikawa_0829/items/e0c364e74b5e22a7bc0d */
 }

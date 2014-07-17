@@ -1,15 +1,12 @@
 @charset "utf-8";
 /*
-  Theme: boilerplate
-  Author: Hatena Blog Team
+  Theme: nanimo
+  Author: wooweezoowee
   Description:
-    はてなブログのデザインCSSカスタマイズの土台に適したデザインテーマです。
-    このテーマをもとにしてCSSを書くと比較的楽にカスタマイズできます。
-    特定の部分（例えば記事本文の書式やコメント欄のスタイルなど）だけをコピーして使ってもかまいません。
-    もちろんそのままの状態でも、シンプルなテーマとして使うことができます。
-    このCSSおよびLESSファイルは自由に複製・再配布できます。
-    このテーマをもとにしたデザインテーマの配布も自由です。
-
+    はてな提供の、boilerplate がベース。
+    vim プラグインの previm が生成する html ページにインスパイアされてます。
+    - [hatena/Hatena-Blog-Themes] (git@github.com:hatena/Hatena-Blog-Themes.git)
+    - [kannokanno/previm ](git@github.com:kannokanno/previm.git)
   Licensed under the MIT license.
 */
 
@@ -22,17 +19,25 @@
 /*  import variable */
 @import "less/_variable.less";
 
+
 /* Common */
 
 html,
 body {
-    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Kaku Gothic Pro', 'Meiryo', 'MS PGothic', sans-serif;
+    font-family: helvetica,arial,freesans,clean,sans-serif;
     color: @text;
     background-color: @background;
+
+    font-size: @size;
 }
+
+.clearboth { clear: both; }
+
+/* Anchor */
 
 a {
     color: @link;
+    text-decoration: none;
     &:hover {
         color: @hover;
     }
@@ -41,18 +46,30 @@ a {
     }
 }
 
+// jquery 導入で効く。エントリー日付はエントリーフッターへ。
+.entry-date-tofooter .date a:hover {
+    text-decoration: underline;
+}
 
 h1,h2,h3,h4,h5,h6 {
+    color: @text-header;
+
     a,a:hover,a:visited {
         color: @text-header;
         text-decoration: none;
+        &:hover{
+            color: @hover !important;
+        }
     }
 }
 
 a.keyword {
     text-decoration: none;
-    border-bottom: 1px dotted @border;
     color: @text;
+
+    &:hover.keyword {
+        text-decoration: underline !important;
+    }
 }
 
 /* Buttons */
@@ -92,17 +109,19 @@ a.keyword {
 }
 
 /* ヘッダ（グローバルヘッダ）
-  グローバルヘッダの中はiframeですが、
-  #globalheader-container に背景色や文字色を指定することでirameの中にも色が反映されます。
+  グローバルヘッダの中はiframeですが，
+  #globalheader-container に背景色や文字色を指定することでirameの中にも色が反映されます．
 */
 
 #globalheader-container {
-    background-color: #333;
-    color: #fff;
+    color: @text-light;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
 /* container */
@@ -117,29 +136,23 @@ a.keyword {
     #content {
         .clearfix;
     }
+
+    #top-editarea {
+        .clearfix;
+    }
 }
 
 .globalheader-off #container {
     padding-top: 0; // グローバルヘッダ非表示の時
 }
 
-/* 2カラムレイアウト */
-
-#main {
-    width: 600px;
-    float: left;
-}
-
-#box2 {
-    width: 300px;
-    float: right;
-}
-
-/* 1カラムにしたい場合は下記のコメントアウトを外してください ----
+/* one col layout */
 
 #main {
     width: 100%;
     float: none;
+
+    padding: 3em 0 6em;
 }
 
 #box2 {
@@ -148,12 +161,13 @@ a.keyword {
 }
 
 #box2-inner {
+    padding: 84px 0 0;
     width: 960px;
     .clearfix;
     overflow: hidden;
 }
 
-.hatena-module {
+#box2 .hatena-module {
     text-align: left;
     padding-right: 20px;
     width: 300px;
@@ -164,26 +178,74 @@ a.keyword {
     }
 }
 
----- END 1カラム */
+/* Header */
+/* Header > blog title >> page-index only */
+.page-index {
+    #blog-title {
+        margin: 0;
+        padding: 48px 0 2rem; // Check for below '#blog-title when (@searchbox-layout-is = 2)'. overwrite at there.
 
-/* header */
-
-#blog-title {
-    margin: 30px 0;
-    padding: 20px 0;
+    }
 }
+/* Header > blog title >> page-entry, -archive, -category */
+.page-entry,
+.page-archive,
+.page-category-category_name,
+.page-entries-year-month-day {
+    #blog-title {
+        margin: 0;
+        padding: 0;
 
-#title {
-    margin: 0;
-    a {
-        color: @text;
+        border-bottom: 1px solid @border;
+
+        /* to line up the blog title and breadcrump in a row */ // ブログタイトルとトピックパスを、ヘッダーに 1 行で出力するために
+        #blog-title-inner h1#title { display: inline; }
     }
 }
 
-#blog-description {
+/* Header > blog title >> settings for charactors format  */ // 文字のスタイル関係のみ(レイアウト系の処理はここでは行わない)
+.page-index {
+    #blog-title #blog-title-inner #title {
+        font-size: @size-level0;
+        text-align: center;
+        /* anchor */
+        a {
+            color: @text-header !important;
+            /* &:hover { color: @hover !important;  i think to need this link... */
+        }
+    }
+}
+.page-entry,
+.page-archive,
+.page-category-category_name,
+.page-entries-year-month-day {
+    #blog-title {
+        /* for setting font size to deliemiter string '>' */
+        font-size: @size-small1 !important;
+
+        #blog-title-inner #title {
+            text-align: left;
+            font-size: @size-small1;
+            font-weight: normal;
+            /* anchor */
+            a:hover { text-decoration: underline; }
+        }
+    }
+}
+/* Header > blog title >> description */ // 説明の表示は page-index のみ。他はすべて抑制。
+.page-index #blog-description {
     font-weight: normal;
-    font-size: 80%;
-    margin: 5px 0 0 0;
+    font-size: @size-small1;
+    margin: 0;
+    padding: 3px 0 42px;
+}
+.page-entry,
+.page-archive,
+.page-category-category_name,
+.page-entries-year-month-day {
+    #blog-title {
+        #blog-title-inner #blog-description { display: none; }
+    }
 }
 
 /* ヘッダ画像を設定したとき */
@@ -212,53 +274,62 @@ a.keyword {
 
 }
 
-/* entry */
-
+/* Entry */
 .entry {
     position: relative;
     margin-bottom: 100px;
 }
-
+/* Entry > entry header */
 .entry-header {
-    padding: 0 0 10px 0;
-    margin-bottom: 20px;
-    border-bottom: 1px solid @border;
-    position: relative;
+    margin: 0;
+    padding: 0;
+    position: relative;    // [編集] ボタン レイアウトの為 必要
 }
-
+/* Entry > entry title */
 .entry-title {
     margin: 0;
-    line-height: 1.3;
-    font-size: 160%;
+    padding: 0;
+
+    padding: 7px 0;
+
+    line-height: 1;
+    font-size: @size-level2;
 }
 
-/* 日付 */
+/* 日付 */ // エントリー日付はエントリー最下部へ。エントリーヘッダには出さない。(ref. .entry-date-to-entry-footer、jquery 使って制御)
 
 .date {
-    font-weight: bold;
-    margin-bottom: 10px;
+    display: inline-block;
+    font-size: @size-small1;
 
     a {
-        color: @link;
+        color: @text-light;
         text-decoration: none;
-        font-size: 90%;
     }
 }
 
 /* カテゴリ */
 
+.categories:before {
+    content: "tags:  ";
+    color: @text-light;
+}
 .categories {
-    margin-top: 10px;
-    font-size: 80%;
+    padding: 3px 0 1em 3rem;
+    text-indent: -3rem;
+
+    font-size: @size-small1;
+
     a {
         color: @text-light;
     }
     &.no-categories {
-        margin: 0;  // カテゴリー無いとき
+        margin: 0;  // カテゴリー無いとき ...?
     }
 }
 
 /* 「編集する」ボタン */
+
 .entry-header-menu {
     position: absolute;
     bottom: 0px;
@@ -271,10 +342,16 @@ a.keyword {
 /* entry-content の中の書式 */
 
 .entry-content {
-    font-size: 95%;
+    /* font-size: @size; */ // Common in above
     line-height: 1.7;
-    padding-bottom: 10px;
-    border-bottom: 1px solid @border;
+    padding: 0;
+    padding: 14px 0 28px;
+    .page-entry,
+    .page-archive,
+    .page-category-category_name,
+    .page-entries-year-month-day {
+        border-bottom: 1px solid @border;
+    }
 
     p {
         margin: 0 0 1em 0;
@@ -290,27 +367,27 @@ a.keyword {
     }
 
     h1 {
-        font-size: 160%;
+        font-size: @size-level1;
     }
 
     h2 {
-        font-size: 150%;
+        font-size: @size-level2;
     }
 
     h3 {
-        font-size: 140%;
+        font-size: @size-level3;
     }
 
     h4 {
-        font-size: 130%;
+        font-size: @size-level4;
     }
 
     h5 {
-        font-size: 110%;
+        font-size: @size-level5;
     }
 
     h6 {
-        font-size: 100%;
+        font-size: @size-level6;
     }
 
     table {
@@ -333,40 +410,63 @@ a.keyword {
         background: @bg-light;
     }
 
+    blockquote:before {
+        position: absolute;
+        content: open-quote;
+        font-size: 32px;
+        font-weight: normal;
+        color: @text-light;
+        top: -16px;
+        left: 8px;
+    }
+    blockquote:after {
+        position: absolute;
+        content: close-quote;
+        font-size: 32px;
+        font-weight: normal;
+        color: @text-light;
+        bottom: -32px;
+        right: 8px;
+    }
     blockquote {
-        border: 1px solid @border;
+        position: relative;
+        quotes: "“" "”";
         margin: 0 0 10px;
-        padding: 20px;
+        padding: 10px 28px;
+        background-color: @bg-quote;
         p {
             margin-top: 0;
             margin-bottom: 0;
         }
     }
 
+    pre, code {
+        font: @size 'Bitstream Vera Sans Mono','Courier',monospace;
+    }
     pre {
-        border: 1px solid @border;
         margin: 0 0 10px;
         padding: 20px;
+        padding: 6px 10px;
+        padding: 1rem 10px;
         white-space: pre;
-    }
 
+        border-radius: 3px;
+    }
     pre>code {
         margin: 0;
         padding: 0;
         white-space: pre;
         border: 0;
         background: transparent;
-        font-family: 'Monaco', 'Consolas', 'Courier New', Courier, monospace, sans-serif;
     }
-
     code {
-        font-size: 90%;
-        margin: 0 2px;
-        padding: 0 5px;
+        padding: 1px;
         border: 1px solid #eaeaea;
-        background-color: #f8f8f8;
-        border-radius: 3px;
-        font-family: 'Monaco', 'Consolas', 'Courier New', Courier, monospace, sans-serif;
+    }
+    .code {
+        /* background-color: #f8f8f8; */
+        background-color: #383838;
+        color: #fff;
     }
 
     .hatena-asin-detail {
@@ -375,21 +475,34 @@ a.keyword {
         }
     }
 
+    a.entry-see-more {
+        float: right;
+        &:after { content: "..."; }
+    }
 }
 
 /* entry-footer */
 
 .entry-footer {
-    margin-top: 10px;
+    margin-top: 1px;    // 各エントリ、フッタ部に出力した日付との間隔
 }
 
 .entry-footer-section {
-    font-size: 80%;
+    /* wont use username and time. */
+    .author.vcard, .entry-footer-time { display: none; }
+
+    margin: 0;
+
+    font-size: @size-small1;
     color: @text-light;
+    text-align: right;
     a {
         color: @text-light;
     }
+    .entry-date-to-entry-footer a:hover { text-decoration: underline; }
 }
+/* entried date, hide in .page-index only */
+.page-index .entry-footer-section { display: none; }
 
 .social-buttons,
 .entry-footer-html {
@@ -397,25 +510,39 @@ a.keyword {
 }
 
 
+/* Footnote */
+div.footnote {
+    padding: 35px 13px 0;
+    .page-index {
+        border-top: none;
+    }
+    .page-entry,
+    .page-archive,
+    .page-category-category_name,
+    .page-entries-year-month-day {
+        border-top: 1px solid @border;
+    }
+    font-size: @size-small1;
+}
+
+
 /* コメント */
 
 .comment-box {
+
+    padding: 68px 20px 0;
 
     ul {
         list-style: none;
         margin: 0 0 15px 0;
         padding: 0;
-        font-size: 95%;
+        font-size: @size;
         line-height: 1.7;
     }
 
     li {
         padding: 10px 0 10px 60px;
-        border-bottom: 1px solid @border;
         position: relative;
-        &:first-child {
-            border-top: 1px solid @border;
-        }
     }
 
     .read-more-comments {
@@ -439,7 +566,7 @@ a.keyword {
 }
 
 .comment-content {
-    font-size: 90%;
+    font-size: @size-small1;
     margin: 0 0 10px 0;
     word-wrap: break-word;
 
@@ -449,12 +576,13 @@ a.keyword {
 }
 
 .comment-metadata {
-    font-size: 80%;
+    font-size: @size-small2;
     color: @text-light;
     margin: 0;
     a {
         color: @text-light;
     }
+    padding-bottom: 14px;
 }
 
 .leave-comment-title {
@@ -474,8 +602,8 @@ a.keyword {
 
 .hatena-module-title {
     font-weight: bold;
-    margin-bottom: 15px;
-    font-size: 120%;
+    margin-bottom: 8px;
+    font-size: @size-level4;
     a {
         color: @text;
         text-decoration: none;
@@ -483,32 +611,128 @@ a.keyword {
             text-decoration: underline;
         }
     }
+
+    border-bottom: 1px solid @border;
 }
 
 /* Profile module */
 
+#box2 img {
+    width:48px;
+    height:48px;
+}
+
+.hatena-module-body {
+    padding-left: 12px;
+    font-size: @size-small1;
+}
+
 .hatena-module-profile {
 
     .profile-icon {
-        float: left;
-        margin: 0 10px 10px 0;
-        .border-radius(5px);
+        .border-radius(50%);
     }
+}
 
-    .id {
+// jquery 導入で効く。プロフィールが 1 カラムで使用。
+.my-module-profile {
+    width: 100% !important;     /* kill the style of hatena-module */
+    padding: 0 !important;      /* kill the style of hatena-module */
+    padding: 36px 0 !important; /* kill the style of hatena-module */
+    margin: 0 !important;       /* kill the style of hatena-module */
+
+    .hatena-module-body {
+        padding: 24px 0 24px;
+    }
+    .profile-icon {
         display: block;
-        font-weight: bold;
-        font-size: 110%;
-        margin-bottom: 5px;
+        .border-radius(50%);
+        margin: 0 auto;
     }
-
     .profile-description {
-        font-size: 90%;
+        padding: 0 12px;
+        font-size: @size-small1;
+        text-align: center;
+        padding: 0 35%;
         p{
             margin-top: 0;
         }
     }
+    .id-and-button {
+        position: relative;
+        padding: 0px;
+        margin: 5px 0;
 
+        /* add */
+        .id {
+            display: inline;
+            font-size: @size-small1;
+            font-weight: bold;
+            a { color: @text; }
+        }
+
+        .hatena-follow-button-box {
+            display: inline !important;
+            text-align: center !important;
+
+            // 兎に角! [読者になる] ボタンのビジュアル効果が本当に邪魔で邪魔でならない!
+            .hatena-follow-button {
+                display: initial !important;
+                float: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                height: initial !important;
+                border: none !important;
+
+                font-size: @size;
+                line-height: initial !important;
+
+                .transition(0, none) !important;
+                .transition-duration(0) !important;
+
+                &.subscribing,
+                &.unsubscribing {
+                    background: none !important;
+                    float: none !important;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    font-weight: normal;
+                    &:hover {
+                        color: @hover !important;
+                        border: none !important;
+                        background: none !important;
+                /* do NOT need hover {{ */
+                        .foreground { display: inline !important; }
+                        .background { display: none !important; }
+                    }
+                }
+                .background { display: none !important; }
+                /* }} do NOT need hover */
+            }
+            &:after {
+                content: initial !important;
+            }
+        }
+        .subscription-count-box {
+            float: none !important;
+            display: inline-block !important;
+            .subscription-balloon { display: none !important; }
+            .subscription-count {
+                padding: 0 !important;
+                display: inline !important;
+                float: none !important;
+                text-align: center;
+                border: none !important;
+                &:before {
+                    content: " (";
+                }
+                &:after {
+                    content: ")";
+                }
+            }
+        }
+
+    }
 }
 
 /* urllist module
@@ -521,12 +745,15 @@ a.keyword {
     padding: 0 0 0 0;
 
     li {
-        padding: 8px 0;
-        border-bottom: 1px solid @border;
+        padding: 2px 0;
         line-height: 1.5;
 
         a {
             text-decoration: none;
+        }
+
+        .urllist-item-inner.recent-entries-item-inner {
+            .ellipsis(100%);
         }
     }
 
@@ -534,8 +761,7 @@ a.keyword {
 
 /* Search module */
 
-.hatena-module-search-box {
-
+.hatena-module.hatena-module-search-box {
     .search-form {
         border: 1px solid @border;
         .border-radius(3px);
@@ -543,6 +769,7 @@ a.keyword {
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         position: relative;
+
     }
 
     .search-module-input {
@@ -572,24 +799,75 @@ a.keyword {
     }
 }
 
+/* Search module > customized */
+
+#blog-title .searchbox-htn {
+    .hatena-module { margin-bottom: @size-small2 !important }
+    .search-form {
+        border: 1px solid @border;
+        .border-radius(3px);
+        width: 25%;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        position: relative;
+
+        margin-left: auto;
+    }
+    .search-module-input {
+        padding: 5px;
+        color: @text;
+        background: none;
+        border: none;
+        outline: none;
+        height: 20px;
+        width: 90%;
+    }
+
+    .search-module-button {
+        width: 20px;
+        height: 20px;
+        background: transparent url(http://blog.hatena.ne.jp/images/theme/search.png) no-repeat right center;
+        border: none;
+        outline: none;
+        text-indent: -9999px;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        .opacity(.5);
+        &:hover {
+            .opacity(.85);
+        }
+    }
+
+}
+
 /* Pager */
 
 .pager {
     margin: 1em 0;
     .clearfix;
 
+    .pager-prev, pager-next {
+        .ellipsis(45%);
+    }
+
     .pager-prev {
-        float: left;
-        text-align: left;
-        width: 45%;
+        float: right;
+        text-align: right;
     }
 
     .pager-next {
-        float: right;
-        text-align: right;
-        width: 45%;
+        float: left;
+        text-align: left;
     }
 
+    .pager-prev a:after {
+        content: "»";
+    }
+    .pager-next a:before {
+        content: "«";
+    }
+    .pager-arrow { display: none; }
 }
 
 /* Footer */
@@ -616,7 +894,7 @@ a.keyword {
 .page-about {
 
     dt {
-        font-size: 16px;
+        font-size: @size;
         font-weight: bold;
         border-bottom: 1px solid #dfdfdf;
         margin-bottom: 5px;
@@ -629,9 +907,10 @@ a.keyword {
 }
 
 /* archive ページ */
-
+body.page-archive {
+    font-size: 12px;
+}
 .page-archive {
-
     .archive-entries {
 
         .archive-entry {
@@ -639,36 +918,26 @@ a.keyword {
         }
 
         .entry-title {
-            font-size: 130%;
-            margin: 0 0 .5em;
+            font-size: @size-level3;
+            padding: 0;
         }
 
         .categories {
             margin: 0 0 .5em;
+            font-size: @size-small1;
         }
 
         .entry-description {
             margin: 0 0 1em;
             line-height: 1.7em;
-            font-size: 95%;
+            font-size: @size;
         }
 
+        .date {
+            display: none;
+        }
     }
-
-    .categories a {
-        color: #fff;
-        font-size: 70%;
-        background: #aaa;
-        padding: 3px 5px;
-        border-radius: 3px;
-        text-decoration: none;
-        .inline-block;
-        margin-right: 2px;
-    }
-
 }
-
-
 
 /*  import media queries */
 @import "less/_media-queries.less";
