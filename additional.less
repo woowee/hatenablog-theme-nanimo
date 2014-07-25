@@ -1,0 +1,55 @@
+@charset "utf-8";
+/*
+  Theme: --
+  Author: wooweezoowee
+  Description: はてな  blog 向け、追加用スタイル。
+  Licensed under the MIT license.
+*/
+
+/*  import mixin */
+@import "less/_mixin.less";
+
+/*  import variable */
+@import "less/_variable.less";
+
+
+/*** description of references ***/
+.entry .via,
+.entry .viacode {
+  font-size: .5rem;
+  text-align: right;
+}
+
+/*** abstracts ***/
+.entry .abstracts {
+  border: 1px solid @border;
+  background-color: #ececea;
+
+  padding: 10px;
+  margin: .25rem 0;
+
+  .border-radius(2px);
+
+  h4 {
+    margin: 0;
+    margin-top: 0.75em;
+  }
+
+  .contents {
+    margin: 0 .25em;
+    font-size: 95%;
+    .notes {
+      margin:0;
+      margin: .25em 0 0 1.25em;
+      text-indent: -1.0em;
+    }
+  }
+  pre {
+    margin: 0;
+    margin: .25em .25em 1em;
+  }
+
+  li {
+    margin-top: .5rem;
+  }
+}

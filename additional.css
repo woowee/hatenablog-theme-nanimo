@@ -1,0 +1,75 @@
+@charset "utf-8";
+/*
+  Theme: --
+  Author: wooweezoowee
+  Description: はてな  blog 向け、追加用スタイル。
+  Licensed under the MIT license.
+*/
+/*  import mixin */
+.clearfix {
+  display: block;
+  *zoom: 1;
+}
+.clearfix:after {
+  display: block;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  content: ".";
+}
+.inline-block {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+.ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+/*  import variable */
+/*  -background color  */
+/*  -text color        */
+/*  -link text color   */
+/*  -border color      */
+/*  -button background */
+/*** description of references ***/
+.entry .via,
+.entry .viacode {
+  font-size: .5rem;
+  text-align: right;
+}
+/*** abstracts ***/
+.entry .abstracts {
+  border: 1px solid #cccccc;
+  background-color: #ececea;
+  padding: 10px;
+  margin: .25rem 0;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-radius: 2px;
+  background-clip: padding-box;
+}
+.entry .abstracts h4 {
+  margin: 0;
+  margin-top: 0.75em;
+}
+.entry .abstracts .contents {
+  margin: 0 .25em;
+  font-size: 95%;
+}
+.entry .abstracts .contents .notes {
+  margin: 0;
+  margin: .25em 0 0 1.25em;
+  text-indent: -1em;
+}
+.entry .abstracts pre {
+  margin: 0;
+  margin: .25em .25em 1em;
+}
+.entry .abstracts li {
+  margin-top: .5rem;
+}
