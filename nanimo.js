@@ -37,7 +37,7 @@ $(function(){
     $(".my-module-profile .id, .my-module-profile .hatena-follow-button-box.btn-subscribe").wrapAll("<div class='id-and-button'>");
 
     // put id and the follow-button on center..
-    var x_center = $(".id-and-button").width() * .5;
+    var x_center = $("#box2").width() * .5;
     if ($('.my-module-profile span').hasClass('id')) {
         //alert ("has id");
         var x_shift = $(".id").width() * .50;
@@ -48,7 +48,8 @@ $(function(){
 
     /* var xis = x_center - x_shift * .50; */
     var xis = x_center - x_shift;
-    //alert (xis + "=" + x_center + "-" + x_shift);
+
+    // put on the center
     $(".id-and-button").css({"padding-left" : xis+"px"});
 
     // move the profile to outside of hatena module
