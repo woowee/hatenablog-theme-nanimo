@@ -388,19 +388,11 @@ th {
   overflow: hidden;
 }
 /*  import variable */
-/* Background color */
-/* Background color */
-/* Base text color */
-/* Light text color */
-/* h1~h6 text color */
-/* h1~h6 text color */
-/* Link text color */
-/* Link text color(hover) */
-/* Link text color(hover) */
-/* Border color */
-/* Border color */
-/* button background */
-/* button hover backgroud */
+/*  -background color  */
+/*  -text color        */
+/*  -link text color   */
+/*  -border color      */
+/*  -button background */
 /* Common */
 html,
 body {
@@ -780,7 +772,7 @@ a.keyword:hover.keyword {
   border-bottom: 1px solid #cccccc;
 }
 .entry-content p {
-  margin: 0 0 1em 0;
+  margin: .5rem 0;
 }
 .entry-content img {
   max-width: 100%;
@@ -791,8 +783,8 @@ a.keyword:hover.keyword {
 .entry-content h4,
 .entry-content h5,
 .entry-content h6 {
-  margin: 1.3em 0 0.8em 0;
-  line-height: 1.5;
+  margin: 2.7em 0 0.8em 0;
+  line-height: 1.2;
 }
 .entry-content h1 {
   font-size: 4.236rem;
@@ -1091,7 +1083,6 @@ div.footnote .page-entries-year-month-day {
   position: relative;
   padding: 0px;
   margin: 5px 0;
-  /* add */
 }
 .my-module-profile .id-and-button .id {
   display: inline;
