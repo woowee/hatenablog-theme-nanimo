@@ -2,6 +2,17 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
 
+
+/* ============================================================ *
+    entry title is not <h1> but <h2>!
+ * ============================================================ */
+
+$(function(){
+    $("h1.entry-title").each(function(){
+        $(this).replaceWith('<h2 class="entry-title">' + $(this).html() +'</h2>');
+    });
+});
+
 /* ============================================================ *
     open in new tab(window)
  * ============================================================ */
