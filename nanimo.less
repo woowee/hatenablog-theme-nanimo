@@ -10,28 +10,45 @@
   Licensed under the MIT license.
 */
 
-/*  import normalize */
+
+/* Import
+-------------------------------------------------- */
+
 @import "less/_normalize.less";
-
-/*  import mixin */
 @import "less/_mixin.less";
-
-/*  import variable */
 @import "less/_variable.less";
 
 
-/* Common */
+/* Common
+-------------------------------------------------- */
 
 html,
 body {
-    font-family: helvetica,arial,freesans,clean,sans-serif;
+    font-family: 'メイリオ', 'Hiragino Kaku Gothic Pro', Meiryo, 'ヒラギノ角ゴ ProN W3', 'MS PGothic', 'MS UI Gothic', Helvetica, Arial, sans-serif;
     color: @text;
     background-color: @background;
 
-    font-size: @size;
+    font-size: @size;   /* Scale Origin (Ideal text size) */
 }
 
 .clearboth { clear: both; }
+
+/* Header */
+
+h1 { font-size: @size-level1; } /* Scale Origin (Important number) */
+h2 { font-size: @size-level2; }
+h3 { font-size: @size-level3; }
+h4 { font-size: @size-level4; }
+h5 { font-size: @size-level5; }
+h6 { font-size: @size-level6; }
+
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+    padding: 0;
+
+    color: @text-header;
+}
+
 
 /* Anchor */
 
@@ -44,21 +61,20 @@ a {
     &:visited {
         color: @visited;
     }
-}
 
-// jquery 導入で効く。エントリー日付はエントリーフッターへ。
-.entry-date-tofooter .date a:hover {
-    text-decoration: underline;
-}
+    // of header
+    h1 &,h2 &,h3 &,h4 &,h5 &,h6 & {
 
-h1,h2,h3,h4,h5,h6 {
-    color: @text-header;
-
-    a,a:hover,a:visited {
         color: @text-header;
         text-decoration: none;
+
         &:hover{
             color: @hover !important;
+            text-decoration: none;
+        }
+        &:visited {
+            color: @text-header;
+            text-decoration: none;
         }
     }
 }
@@ -124,7 +140,10 @@ a.keyword {
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
-/* container */
+
+
+/* Container
+-------------------------------------------------- */
 
 #container {
     width: 940px;
@@ -178,8 +197,12 @@ a.keyword {
     }
 }
 
-/* Header */
-/* Header > blog title >> page-index only */
+
+
+/* Blog Title
+-------------------------------------------------- */
+
+/* Leyout: page-index */
 .page-index {
     #blog-title {
         margin: 0;
@@ -187,7 +210,10 @@ a.keyword {
 
     }
 }
-/* Header > blog title >> page-entry, -archive, -category */
+
+/* Layout: page-entry    */
+/* Layout: page-archive  */
+/* Layout: page-category */
 .page-entry,
 .page-archive,
 .page-category-category_name,
@@ -199,22 +225,23 @@ a.keyword {
         border-bottom: 1px solid @border;
 
         /* to line up the blog title and breadcrump in a row */ // ブログタイトルとトピックパスを、ヘッダーに 1 行で出力するために
-        #blog-title-inner h1#title { display: inline; }
+        #blog-title-inner #title { display: inline; }
+
     }
 }
 
-/* Header > blog title >> settings for charactors format  */ // 文字のスタイル関係のみ(レイアウト系の処理はここでは行わない)
+/* Font Style: page-index */ // 文字のスタイル関係のみ(レイアウト系の処理はここでは行わない)
 .page-index {
-    #blog-title #blog-title-inner #title {
-        font-size: @size-level0;
+    #blog-title {
         text-align: center;
         /* anchor */
-        a {
-            color: @text-header !important;
-            /* &:hover { color: @hover !important;  i think to need this link... */
-        }
+        a:hover { color: @text-header !important; }
     }
 }
+
+/* Font Style: page-entry    */
+/* Font Style: page-archive  */
+/* Font Style: page-category */
 .page-entry,
 .page-archive,
 .page-category-category_name,
@@ -227,18 +254,23 @@ a.keyword {
             text-align: left;
             font-size: @size-small1;
             font-weight: normal;
-            /* anchor */
-            a:hover { text-decoration: underline; }
+            /* anchor */ // 上述 <h#> の定義そのまま。
         }
     }
 }
-/* Header > blog title >> description */ // 説明の表示は page-index のみ。他はすべて抑制。
+
+/* Blog Description: page-index */ // 説明の表示は page-index のみ。他はすべて抑制。
 .page-index #blog-description {
-    font-weight: normal;
-    font-size: @size-small1;
     margin: 0;
     padding: 3px 0 42px;
+
+    font-weight: normal;
+    font-size: @size-small1;
 }
+
+/* Blog Description: page-entry    */
+/* Blog Description: page-archive  */
+/* Blog Description: page-category */
 .page-entry,
 .page-archive,
 .page-category-category_name,
@@ -249,7 +281,6 @@ a.keyword {
 }
 
 /* ヘッダ画像を設定したとき */
-
 .header-image-enable {
     #title {
         padding-top: 70px;
@@ -262,7 +293,6 @@ a.keyword {
 }
 
 /* パンくず（カテゴリーページで表示されます） */
-
 #top-box {
     margin: 10px auto 20px;
     font-size: 90%;
@@ -271,33 +301,33 @@ a.keyword {
           border: 1px solid @border;
           padding: 10px;
     }
-
 }
 
-/* Entry */
+
+/* 各エントリー毎
+-------------------------------------------------- */
 .entry {
     position: relative;
     margin-bottom: 100px;
 }
-/* Entry > entry header */
 .entry-header {
     margin: 0;
     padding: 0;
     position: relative;    // [編集] ボタン レイアウトの為 必要
 }
-/* Entry > entry title */
+
+/* タイトル */
 .entry-title {
     margin: 0;
     padding: 0;
 
     padding: 7px 0;
 
-    line-height: 1;
     font-size: @size-level2;
+    line-height: @size-level2;
 }
 
 /* 日付 */ // エントリー日付はエントリー最下部へ。エントリーヘッダには出さない。(ref. .entry-date-to-entry-footer、jquery 使って制御)
-
 .date {
     display: inline-block;
     font-size: @size-small1;
@@ -307,13 +337,12 @@ a.keyword {
         text-decoration: none;
     }
 }
+// jquery 導入で効く。エントリー日付はエントリーフッターへ。
+.entry-date-tofooter .date a:hover {
+    text-decoration: underline;
+}
 
 /* カテゴリ */
-
-.categories:before {
-    content: "tags:  ";
-    color: @text-light;
-}
 .categories {
     padding: 3px 0 1em 3rem;
     text-indent: -3rem;
@@ -322,6 +351,9 @@ a.keyword {
 
     a {
         color: @text-light;
+
+        &:before { content: "["; }
+        &:after { content: "]"; }
     }
     &.no-categories {
         margin: 0;  // カテゴリー無いとき ...?
@@ -329,7 +361,6 @@ a.keyword {
 }
 
 /* 「編集する」ボタン */
-
 .entry-header-menu {
     position: absolute;
     bottom: 0px;
@@ -339,13 +370,14 @@ a.keyword {
     }
 }
 
-/* entry-content の中の書式 */
-
+/* コンテンツ本文 */
 .entry-content {
     /* font-size: @size; */ // Common in above
-    line-height: 1.7;
+    line-height: 1.618rem;
+
     padding: 0;
     padding: 14px 0 28px;
+
     .page-entry,
     .page-archive,
     .page-category-category_name,
@@ -354,7 +386,8 @@ a.keyword {
     }
 
     p {
-        margin: .5rem 0;
+        /* padding-top: .618rem; */
+        /* padding-bottom: .618rem; */
     }
 
     img {
@@ -362,32 +395,34 @@ a.keyword {
     }
 
     h1,h2,h3,h4,h5,h6 {
-        margin: 2.7em 0 0.8em 0;
-        line-height: 1.2;
-    }
+        margin-left: -.382em;
+        margin-right: -.382em;
 
-    h1 {
-        font-size: @size-level1;
+        margin-bottom: 0;
+
+        line-height: 2.618rem;
     }
 
     h2 {
         font-size: @size-level2;
+        margin-top: 0;
     }
-
     h3 {
         font-size: @size-level3;
+        margin-top: 4.236rem;        // @size 基準
     }
-
     h4 {
         font-size: @size-level4;
+        margin-top: 2.618rem;       // @size 基準
     }
-
     h5 {
         font-size: @size-level5;
+        margin-top: 1.618rem;       // @size 基準
     }
-
+    // maybe <h6>  is rarely used...
     h6 {
         font-size: @size-level6;
+        margin-top: 1.618rem;       // @size 基準
     }
 
     table {
@@ -416,7 +451,7 @@ a.keyword {
         font-size: 32px;
         font-weight: normal;
         color: @text-light;
-        top: -16px;
+        top: @size;
         left: 8px;
     }
     blockquote:after {
@@ -425,14 +460,14 @@ a.keyword {
         font-size: 32px;
         font-weight: normal;
         color: @text-light;
-        bottom: -32px;
+        bottom: - @size;
         right: 8px;
     }
     blockquote {
         position: relative;
         quotes: "“" "”";
         margin: 0 0 10px;
-        padding: 10px 28px;
+        padding: @size (@size * 2);
         background-color: @bg-quote;
         p {
             margin-top: 0;
@@ -441,7 +476,7 @@ a.keyword {
     }
 
     pre, code {
-        font: @size 'Bitstream Vera Sans Mono','Courier',monospace;
+        font: @size Consolas, "Liberation Mono", Menlo, Courier, monospace;
     }
     pre {
         margin: 0 0 10px;
@@ -460,9 +495,18 @@ a.keyword {
         background: transparent;
     }
     code {
-        padding: 1px;
+        margin: 0 .1em;
+        padding: 0 .2em;
         border: 1px solid #eaeaea;
     }
+
+
+    h2 code { font-size: @size-level2; }
+    h3 code { font-size: @size-level3; }
+    h4 code { font-size: @size-level4; }
+    h5 code { font-size: @size-level5; }
+    h6 code { font-size: @size-level6; }
+
     .code {
         /* background-color: #f8f8f8; */
         background-color: #383838;
@@ -481,12 +525,10 @@ a.keyword {
     }
 }
 
-/* entry-footer */
-
+/* フッター */
 .entry-footer {
     margin-top: 1px;    // 各エントリ、フッタ部に出力した日付との間隔
 }
-
 .entry-footer-section {
     /* wont use username and time. */
     .author.vcard, .entry-footer-time { display: none; }
@@ -501,6 +543,7 @@ a.keyword {
     }
     .entry-date-to-entry-footer a:hover { text-decoration: underline; }
 }
+
 /* entried date, hide in .page-index only */
 .page-index .entry-footer-section { display: none; }
 
@@ -508,7 +551,6 @@ a.keyword {
 .entry-footer-html {
     margin: 10px 0;
 }
-
 
 /* Footnote */
 div.footnote {
@@ -525,9 +567,7 @@ div.footnote {
     font-size: @size-small1;
 }
 
-
 /* コメント */
-
 .comment-box {
 
     padding: 68px 20px 0;
@@ -589,8 +629,8 @@ div.footnote {
     .btn;
 }
 
-/* sidebar */
-
+/* Side Bar
+-------------------------------------------------- */
 #box2 {
     font-size: 85%;
     line-height: 1.5;
@@ -840,8 +880,8 @@ div.footnote {
 
 }
 
-/* Pager */
-
+/* ページャ
+-------------------------------------------------- */
 .pager {
     margin: 1em 0;
     .clearfix;
@@ -869,8 +909,8 @@ div.footnote {
     .pager-arrow { display: none; }
 }
 
-/* Footer */
-
+/* フッタ
+-------------------------------------------------- */
 #footer {
     padding: 30px 0;
     text-align: center;
@@ -888,8 +928,9 @@ div.footnote {
 
 }
 
-/* About ページ */
 
+/* About ページ
+-------------------------------------------------- */
 .page-about {
 
     dt {
@@ -905,7 +946,9 @@ div.footnote {
     }
 }
 
-/* archive ページ */
+
+/* Archive ページ
+-------------------------------------------------- */
 body.page-archive {
     font-size: 12px;
 }

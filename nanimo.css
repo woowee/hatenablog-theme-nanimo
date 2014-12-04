@@ -9,7 +9,8 @@
     - [kannokanno/previm ](git@github.com:kannokanno/previm.git)
   Licensed under the MIT license.
 */
-/*  import normalize */
+/* Import
+-------------------------------------------------- */
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -364,7 +365,6 @@ td,
 th {
   padding: 0;
 }
-/*  import mixin */
 .clearfix {
   display: block;
   *zoom: 1;
@@ -387,22 +387,60 @@ th {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-/*  import variable */
 /*  -background color  */
 /*  -text color        */
 /*  -link text color   */
 /*  -border color      */
 /*  -button background */
-/* Common */
+/* Modular Scale
+----------------------
+  15px @ 1:1.618 (*)
+  75px @ 1:1.618
+
+  http://modularscale.com/scale/?px1=15&px2=75&ra1=1.618&ra2=0
+---------------------- */
+/* Common
+-------------------------------------------------- */
 html,
 body {
-  font-family: helvetica, arial, freesans, clean, sans-serif;
+  font-family: 'メイリオ', 'Hiragino Kaku Gothic Pro', Meiryo, 'ヒラギノ角ゴ ProN W3', 'MS PGothic', 'MS UI Gothic', Helvetica, Arial, sans-serif;
   color: #333333;
   background-color: #ffffff;
-  font-size: 14px;
+  font-size: 15px;
+  /* Scale Origin (Ideal text size) */
 }
 .clearboth {
   clear: both;
+}
+/* Header */
+h1 {
+  font-size: 5rem;
+}
+/* Scale Origin (Important number) */
+h2 {
+  font-size: 3.09rem;
+}
+h3 {
+  font-size: 1.91rem;
+}
+h4 {
+  font-size: 1.18rem;
+}
+h5 {
+  font-size: 0.45rem;
+}
+h6 {
+  font-size: 0.45rem;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  color: #1c1c1c;
 }
 /* Anchor */
 a {
@@ -415,35 +453,12 @@ a:hover {
 a:visited {
   color: #789dae;
 }
-.entry-date-tofooter .date a:hover {
-  text-decoration: underline;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #1c1c1c;
-}
 h1 a,
 h2 a,
 h3 a,
 h4 a,
 h5 a,
-h6 a,
-h1 a:hover,
-h2 a:hover,
-h3 a:hover,
-h4 a:hover,
-h5 a:hover,
-h6 a:hover,
-h1 a:visited,
-h2 a:visited,
-h3 a:visited,
-h4 a:visited,
-h5 a:visited,
-h6 a:visited {
+h6 a {
   color: #1c1c1c;
   text-decoration: none;
 }
@@ -452,20 +467,18 @@ h2 a:hover,
 h3 a:hover,
 h4 a:hover,
 h5 a:hover,
-h6 a:hover,
-h1 a:hover:hover,
-h2 a:hover:hover,
-h3 a:hover:hover,
-h4 a:hover:hover,
-h5 a:hover:hover,
-h6 a:hover:hover,
-h1 a:visited:hover,
-h2 a:visited:hover,
-h3 a:visited:hover,
-h4 a:visited:hover,
-h5 a:visited:hover,
-h6 a:visited:hover {
+h6 a:hover {
   color: #0f5373 !important;
+  text-decoration: none;
+}
+h1 a:visited,
+h2 a:visited,
+h3 a:visited,
+h4 a:visited,
+h5 a:visited,
+h6 a:visited {
+  color: #1c1c1c;
+  text-decoration: none;
 }
 a.keyword {
   text-decoration: none;
@@ -527,7 +540,8 @@ a.keyword:hover.keyword {
   background: rgba(255, 255, 255, 0.5);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
 }
-/* container */
+/* Container
+-------------------------------------------------- */
 #container {
   width: 940px;
   margin-left: auto;
@@ -596,13 +610,16 @@ a.keyword:hover.keyword {
 #box2 .hatena-module:nth-child(3n+1) {
   clear: both;
 }
-/* Header */
-/* Header > blog title >> page-index only */
+/* Blog Title
+-------------------------------------------------- */
+/* Leyout: page-index */
 .page-index #blog-title {
   margin: 0;
   padding: 48px 0 2rem;
 }
-/* Header > blog title >> page-entry, -archive, -category */
+/* Layout: page-entry    */
+/* Layout: page-archive  */
+/* Layout: page-category */
 .page-entry #blog-title,
 .page-archive #blog-title,
 .page-category-category_name #blog-title,
@@ -612,22 +629,23 @@ a.keyword:hover.keyword {
   border-bottom: 1px solid #cccccc;
   /* to line up the blog title and breadcrump in a row */
 }
-.page-entry #blog-title #blog-title-inner h1#title,
-.page-archive #blog-title #blog-title-inner h1#title,
-.page-category-category_name #blog-title #blog-title-inner h1#title,
-.page-entries-year-month-day #blog-title #blog-title-inner h1#title {
+.page-entry #blog-title #blog-title-inner #title,
+.page-archive #blog-title #blog-title-inner #title,
+.page-category-category_name #blog-title #blog-title-inner #title,
+.page-entries-year-month-day #blog-title #blog-title-inner #title {
   display: inline;
 }
-/* Header > blog title >> settings for charactors format  */
-.page-index #blog-title #blog-title-inner #title {
-  font-size: 6.854rem;
+/* Font Style: page-index */
+.page-index #blog-title {
   text-align: center;
   /* anchor */
 }
-.page-index #blog-title #blog-title-inner #title a {
+.page-index #blog-title a:hover {
   color: #1c1c1c !important;
-  /* &:hover { color: @hover !important;  i think to need this link... */
 }
+/* Font Style: page-entry    */
+/* Font Style: page-archive  */
+/* Font Style: page-category */
 .page-entry #blog-title,
 .page-archive #blog-title,
 .page-category-category_name #blog-title,
@@ -644,19 +662,16 @@ a.keyword:hover.keyword {
   font-weight: normal;
   /* anchor */
 }
-.page-entry #blog-title #blog-title-inner #title a:hover,
-.page-archive #blog-title #blog-title-inner #title a:hover,
-.page-category-category_name #blog-title #blog-title-inner #title a:hover,
-.page-entries-year-month-day #blog-title #blog-title-inner #title a:hover {
-  text-decoration: underline;
-}
-/* Header > blog title >> description */
+/* Blog Description: page-index */
 .page-index #blog-description {
-  font-weight: normal;
-  font-size: 0.618rem;
   margin: 0;
   padding: 3px 0 42px;
+  font-weight: normal;
+  font-size: 0.618rem;
 }
+/* Blog Description: page-entry    */
+/* Blog Description: page-archive  */
+/* Blog Description: page-category */
 .page-entry #blog-title #blog-title-inner #blog-description,
 .page-archive #blog-title #blog-title-inner #blog-description,
 .page-category-category_name #blog-title #blog-title-inner #blog-description,
@@ -680,24 +695,24 @@ a.keyword:hover.keyword {
   border: 1px solid #cccccc;
   padding: 10px;
 }
-/* Entry */
+/* 各エントリー毎
+-------------------------------------------------- */
 .entry {
   position: relative;
   margin-bottom: 100px;
 }
-/* Entry > entry header */
 .entry-header {
   margin: 0;
   padding: 0;
   position: relative;
 }
-/* Entry > entry title */
+/* タイトル */
 .entry-title {
   margin: 0;
   padding: 0;
   padding: 7px 0;
-  line-height: 1;
-  font-size: 2.618rem;
+  font-size: 3.09rem;
+  line-height: 3.09rem;
 }
 /* 日付 */
 .date {
@@ -708,11 +723,10 @@ a.keyword:hover.keyword {
   color: #999999;
   text-decoration: none;
 }
-/* カテゴリ */
-.categories:before {
-  content: "tags:  ";
-  color: #999999;
+.entry-date-tofooter .date a:hover {
+  text-decoration: underline;
 }
+/* カテゴリ */
 .categories {
   padding: 3px 0 1em 3rem;
   text-indent: -3rem;
@@ -720,6 +734,12 @@ a.keyword:hover.keyword {
 }
 .categories a {
   color: #999999;
+}
+.categories a:before {
+  content: "[";
+}
+.categories a:after {
+  content: "]";
 }
 .categories.no-categories {
   margin: 0;
@@ -758,10 +778,10 @@ a.keyword:hover.keyword {
   background-color: #f5f5f5;
   text-decoration: none !important;
 }
-/* entry-content の中の書式 */
+/* コンテンツ本文 */
 .entry-content {
   /* font-size: @size; */
-  line-height: 1.7;
+  line-height: 1.618rem;
   padding: 0;
   padding: 14px 0 28px;
 }
@@ -772,7 +792,8 @@ a.keyword:hover.keyword {
   border-bottom: 1px solid #cccccc;
 }
 .entry-content p {
-  margin: .5rem 0;
+  /* padding-top: .618rem; */
+  /* padding-bottom: .618rem; */
 }
 .entry-content img {
   max-width: 100%;
@@ -783,26 +804,30 @@ a.keyword:hover.keyword {
 .entry-content h4,
 .entry-content h5,
 .entry-content h6 {
-  margin: 2.7em 0 0.8em 0;
-  line-height: 1.2;
-}
-.entry-content h1 {
-  font-size: 4.236rem;
+  margin-left: -0.382em;
+  margin-right: -0.382em;
+  margin-bottom: 0;
+  line-height: 2.618rem;
 }
 .entry-content h2 {
-  font-size: 2.618rem;
+  font-size: 3.09rem;
+  margin-top: 0;
 }
 .entry-content h3 {
-  font-size: 1.618rem;
+  font-size: 1.91rem;
+  margin-top: 4.236rem;
 }
 .entry-content h4 {
-  font-size: 1rem;
+  font-size: 1.18rem;
+  margin-top: 2.618rem;
 }
 .entry-content h5 {
-  font-size: 1rem;
+  font-size: 0.45rem;
+  margin-top: 1.618rem;
 }
 .entry-content h6 {
-  font-size: 1rem;
+  font-size: 0.45rem;
+  margin-top: 1.618rem;
 }
 .entry-content table {
   border-collapse: collapse;
@@ -826,7 +851,7 @@ a.keyword:hover.keyword {
   font-size: 32px;
   font-weight: normal;
   color: #999999;
-  top: -16px;
+  top: 15px;
   left: 8px;
 }
 .entry-content blockquote:after {
@@ -835,14 +860,14 @@ a.keyword:hover.keyword {
   font-size: 32px;
   font-weight: normal;
   color: #999999;
-  bottom: -32px;
+  bottom: - 15px;
   right: 8px;
 }
 .entry-content blockquote {
   position: relative;
   quotes: "“" "”";
   margin: 0 0 10px;
-  padding: 10px 28px;
+  padding: 15px 30px;
   background-color: #f7fbfc;
 }
 .entry-content blockquote p {
@@ -851,7 +876,7 @@ a.keyword:hover.keyword {
 }
 .entry-content pre,
 .entry-content code {
-  font: 14px 'Bitstream Vera Sans Mono', 'Courier', monospace;
+  font: 15px Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 .entry-content pre {
   margin: 0 0 10px;
@@ -869,8 +894,24 @@ a.keyword:hover.keyword {
   background: transparent;
 }
 .entry-content code {
-  padding: 1px;
+  margin: 0 .1em;
+  padding: 0 .2em;
   border: 1px solid #eaeaea;
+}
+.entry-content h2 code {
+  font-size: 3.09rem;
+}
+.entry-content h3 code {
+  font-size: 1.91rem;
+}
+.entry-content h4 code {
+  font-size: 1.18rem;
+}
+.entry-content h5 code {
+  font-size: 0.45rem;
+}
+.entry-content h6 code {
+  font-size: 0.45rem;
 }
 .entry-content .code {
   /* background-color: #f8f8f8; */
@@ -886,7 +927,7 @@ a.keyword:hover.keyword {
 .entry-content a.entry-see-more:after {
   content: "...";
 }
-/* entry-footer */
+/* フッター */
 .entry-footer {
   margin-top: 1px;
 }
@@ -937,7 +978,7 @@ div.footnote .page-entries-year-month-day {
   list-style: none;
   margin: 0 0 15px 0;
   padding: 0;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.7;
 }
 .comment-box li {
@@ -1009,7 +1050,8 @@ div.footnote .page-entries-year-month-day {
   background-color: #f5f5f5;
   text-decoration: none !important;
 }
-/* sidebar */
+/* Side Bar
+-------------------------------------------------- */
 #box2 {
   font-size: 85%;
   line-height: 1.5;
@@ -1020,7 +1062,7 @@ div.footnote .page-entries-year-month-day {
 .hatena-module-title {
   font-weight: bold;
   margin-bottom: 8px;
-  font-size: 1rem;
+  font-size: 1.18rem;
   border-bottom: 1px solid #cccccc;
 }
 .hatena-module-title a {
@@ -1103,7 +1145,7 @@ div.footnote .page-entries-year-month-day {
   padding: 0 !important;
   height: initial !important;
   border: none !important;
-  font-size: 14px;
+  font-size: 15px;
   line-height: initial !important;
   transition: all 0 none !important;
   transition-duration: 0 !important;
@@ -1266,7 +1308,8 @@ div.footnote .page-entries-year-month-day {
   opacity: 0.85;
   filter: alpha(opacity=85);
 }
-/* Pager */
+/* ページャ
+-------------------------------------------------- */
 .pager {
   margin: 1em 0;
   display: block;
@@ -1307,7 +1350,8 @@ div.footnote .page-entries-year-month-day {
 .pager .pager-arrow {
   display: none;
 }
-/* Footer */
+/* フッタ
+-------------------------------------------------- */
 #footer {
   padding: 30px 0;
   text-align: center;
@@ -1321,9 +1365,10 @@ div.footnote .page-entries-year-month-day {
 #footer a {
   color: #999999;
 }
-/* About ページ */
+/* About ページ
+-------------------------------------------------- */
 .page-about dt {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
   border-bottom: 1px solid #dfdfdf;
   margin-bottom: 5px;
@@ -1332,7 +1377,8 @@ div.footnote .page-entries-year-month-day {
   margin-left: 0;
   margin-bottom: 30px;
 }
-/* archive ページ */
+/* Archive ページ
+-------------------------------------------------- */
 body.page-archive {
   font-size: 12px;
 }
@@ -1340,7 +1386,7 @@ body.page-archive {
   margin-bottom: 3em;
 }
 .page-archive .archive-entries .entry-title {
-  font-size: 1.618rem;
+  font-size: 1.91rem;
   padding: 0;
 }
 .page-archive .archive-entries .categories {
@@ -1350,7 +1396,7 @@ body.page-archive {
 .page-archive .archive-entries .entry-description {
   margin: 0 0 1em;
   line-height: 1.7em;
-  font-size: 14px;
+  font-size: 15px;
 }
 .page-archive .archive-entries .date {
   display: none;
