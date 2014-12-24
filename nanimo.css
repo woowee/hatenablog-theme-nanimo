@@ -404,7 +404,7 @@ Modular Scale
 -------------------------------------------------- */
 html,
 body {
-  font-family: 'メイリオ', 'Hiragino Kaku Gothic Pro', Meiryo, 'ヒラギノ角ゴ ProN W3', 'MS PGothic', 'MS UI Gothic', Helvetica, Arial, sans-serif;
+  font-family: "Apple TP", "Helvetica Neue", "Helvetica", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "Arial", "Verdana", "sans-serif";
   color: #333333;
   background-color: #ffffff;
   font-size: 16px;
@@ -714,6 +714,7 @@ a.keyword:hover.keyword {
   padding: 7px 0;
   font-size: 3.09rem;
   line-height: 3.09rem;
+  line-height: 1.1em;
 }
 /* 日付 */
 .date {
@@ -793,8 +794,8 @@ a.keyword:hover.keyword {
   border-bottom: 1px solid #cccccc;
 }
 .entry-content p {
-  /* padding-top: .618rem; */
-  /* padding-bottom: .618rem; */
+  /*  ぶら下げインデント 調整 h# のマイナス margin は止める */
+  padding-left: 0.618rem;
 }
 .entry-content img {
   max-width: 100%;
@@ -805,10 +806,12 @@ a.keyword:hover.keyword {
 .entry-content h4,
 .entry-content h5,
 .entry-content h6 {
-  margin-left: -0.382em;
-  margin-right: -0.382em;
+  /* ぶら下げインデント 調整 h# のマイナス margin は止める
+        margin-left: -.382em;
+        margin-right: -.382em;
+        */
   margin-bottom: 0;
-  line-height: 2.618rem;
+  /* line-height: 2.618rem; */
 }
 .entry-content h2 {
   font-size: 3.09rem;
@@ -881,6 +884,7 @@ a.keyword:hover.keyword {
 }
 .entry-content pre {
   margin: 0 0 10px;
+  margin-left: 0.618rem;
   padding: 20px;
   padding: 6px 10px;
   padding: 1rem 10px;

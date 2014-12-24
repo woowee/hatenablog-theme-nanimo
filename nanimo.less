@@ -24,7 +24,8 @@
 
 html,
 body {
-    font-family: 'メイリオ', 'Hiragino Kaku Gothic Pro', Meiryo, 'ヒラギノ角ゴ ProN W3', 'MS PGothic', 'MS UI Gothic', Helvetica, Arial, sans-serif;
+    font-family:"Apple TP","Helvetica Neue","Helvetica","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Arial","Verdana","sans-serif";
+
     color: @text;
     background-color: @background;
 
@@ -325,6 +326,7 @@ a.keyword {
 
     font-size: @size-level2;
     line-height: @size-level2;
+    line-height: 1.1em;
 }
 
 /* 日付 */ // エントリー日付はエントリー最下部へ。エントリーヘッダには出さない。(ref. .entry-date-to-entry-footer、jquery 使って制御)
@@ -386,8 +388,8 @@ a.keyword {
     }
 
     p {
-        /* padding-top: .618rem; */
-        /* padding-bottom: .618rem; */
+        /*  ぶら下げインデント 調整 h# のマイナス margin は止める */
+        padding-left: @indent-contents;
     }
 
     img {
@@ -395,16 +397,19 @@ a.keyword {
     }
 
     h1,h2,h3,h4,h5,h6 {
+        /* ぶら下げインデント 調整 h# のマイナス margin は止める
         margin-left: -.382em;
         margin-right: -.382em;
+        */
 
         margin-bottom: 0;
 
-        line-height: 2.618rem;
+        /* line-height: 2.618rem; */
     }
 
     h2 {
         font-size: @size-level2;
+
         margin-top: 0;
     }
     h3 {
@@ -480,6 +485,7 @@ a.keyword {
     }
     pre {
         margin: 0 0 10px;
+        margin-left: @indent-contents;
         padding: 20px;
         padding: 6px 10px;
         padding: 1rem 10px;
