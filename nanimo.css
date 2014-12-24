@@ -392,13 +392,14 @@ th {
 /*  -link text color   */
 /*  -border color      */
 /*  -button background */
-/* Modular Scale
-----------------------
-  15px @ 1:1.618 (*)
-  75px @ 1:1.618
-
+/*  -font size         */
+/* ----------------------
+Modular Scale
   http://modularscale.com/scale/?px1=15&px2=75&ra1=1.618&ra2=0
+  16px @ 1:1.618 (*)
+  80px @ 1:1.618
 ---------------------- */
+/*  -misc.             */
 /* Common
 -------------------------------------------------- */
 html,
@@ -406,7 +407,7 @@ body {
   font-family: 'メイリオ', 'Hiragino Kaku Gothic Pro', Meiryo, 'ヒラギノ角ゴ ProN W3', 'MS PGothic', 'MS UI Gothic', Helvetica, Arial, sans-serif;
   color: #333333;
   background-color: #ffffff;
-  font-size: 15px;
+  font-size: 16px;
   /* Scale Origin (Ideal text size) */
 }
 .clearboth {
@@ -851,7 +852,7 @@ a.keyword:hover.keyword {
   font-size: 32px;
   font-weight: normal;
   color: #999999;
-  top: 15px;
+  top: 16px;
   left: 8px;
 }
 .entry-content blockquote:after {
@@ -860,14 +861,14 @@ a.keyword:hover.keyword {
   font-size: 32px;
   font-weight: normal;
   color: #999999;
-  bottom: - 15px;
+  bottom: - 16px;
   right: 8px;
 }
 .entry-content blockquote {
   position: relative;
   quotes: "“" "”";
   margin: 0 0 10px;
-  padding: 15px 30px;
+  padding: 16px 32px;
   background-color: #f7fbfc;
 }
 .entry-content blockquote p {
@@ -876,7 +877,7 @@ a.keyword:hover.keyword {
 }
 .entry-content pre,
 .entry-content code {
-  font: 15px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font: 16px Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 .entry-content pre {
   margin: 0 0 10px;
@@ -978,7 +979,7 @@ div.footnote .page-entries-year-month-day {
   list-style: none;
   margin: 0 0 15px 0;
   padding: 0;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.7;
 }
 .comment-box li {
@@ -1145,7 +1146,7 @@ div.footnote .page-entries-year-month-day {
   padding: 0 !important;
   height: initial !important;
   border: none !important;
-  font-size: 15px;
+  font-size: 16px;
   line-height: initial !important;
   transition: all 0 none !important;
   transition-duration: 0 !important;
@@ -1368,7 +1369,7 @@ div.footnote .page-entries-year-month-day {
 /* About ページ
 -------------------------------------------------- */
 .page-about dt {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
   border-bottom: 1px solid #dfdfdf;
   margin-bottom: 5px;
@@ -1396,7 +1397,7 @@ body.page-archive {
 .page-archive .archive-entries .entry-description {
   margin: 0 0 1em;
   line-height: 1.7em;
-  font-size: 15px;
+  font-size: 16px;
 }
 .page-archive .archive-entries .date {
   display: none;
