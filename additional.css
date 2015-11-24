@@ -34,6 +34,14 @@
 /*  -link text color   */
 /*  -border color      */
 /*  -button background */
+/*  -font size         */
+/* ----------------------
+Modular Scale
+  http://modularscale.com/scale/?px1=15&px2=75&ra1=1.618&ra2=0
+  16px @ 1:1.618 (*)
+  80px @ 1:1.618
+---------------------- */
+/*  -misc.             */
 /*** description of references ***/
 .entry .via,
 .entry .viacode {
@@ -42,7 +50,7 @@
 }
 /*** abstracts ***/
 .entry .abstracts {
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   background-color: #ececea;
   padding: 10px;
   margin: .25rem 0;

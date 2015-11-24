@@ -405,8 +405,8 @@ Modular Scale
 html,
 body {
   font-family: "Apple TP", "Helvetica Neue", "Helvetica", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "Arial", "Verdana", "sans-serif";
-  color: #333333;
-  background-color: #ffffff;
+  color: #333;
+  background-color: #fff;
   font-size: 16px;
   /* Scale Origin (Ideal text size) */
 }
@@ -483,7 +483,7 @@ h6 a:visited {
 }
 a.keyword {
   text-decoration: none;
-  color: #333333;
+  color: #333;
 }
 a.keyword:hover.keyword {
   text-decoration: underline !important;
@@ -496,8 +496,8 @@ a.keyword:hover.keyword {
   padding: 4px 10px 4px;
   margin-bottom: 0;
   line-height: 18px;
-  color: #333333;
-  background-color: #ffffff;
+  color: #333;
+  background-color: #fff;
   text-align: center;
   vertical-align: middle;
   border-top-right-radius: 2px;
@@ -532,7 +532,7 @@ a.keyword:hover.keyword {
   #globalheader-container に背景色や文字色を指定することでirameの中にも色が反映されます．
 */
 #globalheader-container {
-  color: #999999;
+  color: #999;
   position: fixed;
   top: 0;
   left: 0;
@@ -627,7 +627,7 @@ a.keyword:hover.keyword {
 .page-entries-year-month-day #blog-title {
   margin: 0;
   padding: 0;
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #ccc;
   /* to line up the blog title and breadcrump in a row */
 }
 .page-entry #blog-title #blog-title-inner #title,
@@ -693,7 +693,7 @@ a.keyword:hover.keyword {
   font-size: 90%;
 }
 #top-box .breadcrumb {
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   padding: 10px;
 }
 /* 各エントリー毎
@@ -722,7 +722,7 @@ a.keyword:hover.keyword {
   font-size: 0.618rem;
 }
 .date a {
-  color: #999999;
+  color: #999;
   text-decoration: none;
 }
 .entry-date-tofooter .date a:hover {
@@ -735,7 +735,7 @@ a.keyword:hover.keyword {
   font-size: 0.618rem;
 }
 .categories a {
-  color: #999999;
+  color: #999;
 }
 .categories a:before {
   content: "[";
@@ -759,8 +759,8 @@ a.keyword:hover.keyword {
   padding: 4px 10px 4px;
   margin-bottom: 0;
   line-height: 18px;
-  color: #333333;
-  background-color: #ffffff;
+  color: #333;
+  background-color: #fff;
   text-align: center;
   vertical-align: middle;
   border-top-right-radius: 2px;
@@ -791,7 +791,7 @@ a.keyword:hover.keyword {
 .entry-content .page-archive,
 .entry-content .page-category-category_name,
 .entry-content .page-entries-year-month-day {
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #ccc;
 }
 .entry-content p {
   /*  ぶら下げインデント 調整 h# のマイナス margin は止める */
@@ -815,7 +815,8 @@ a.keyword:hover.keyword {
 }
 .entry-content h2 {
   font-size: 3.09rem;
-  margin-top: 0;
+  margin-top: 6.854rem;
+  line-height: 1em;
 }
 .entry-content h3 {
   font-size: 1.91rem;
@@ -854,7 +855,7 @@ a.keyword:hover.keyword {
   content: open-quote;
   font-size: 32px;
   font-weight: normal;
-  color: #999999;
+  color: #999;
   top: 16px;
   left: 8px;
 }
@@ -863,7 +864,7 @@ a.keyword:hover.keyword {
   content: close-quote;
   font-size: 32px;
   font-weight: normal;
-  color: #999999;
+  color: #999;
   bottom: - 16px;
   right: 8px;
 }
@@ -940,7 +941,7 @@ a.keyword:hover.keyword {
   /* wont use username and time. */
   margin: 0;
   font-size: 0.618rem;
-  color: #999999;
+  color: #999;
   text-align: right;
 }
 .entry-footer-section .author.vcard,
@@ -948,7 +949,7 @@ a.keyword:hover.keyword {
   display: none;
 }
 .entry-footer-section a {
-  color: #999999;
+  color: #999;
 }
 .entry-footer-section .entry-date-to-entry-footer a:hover {
   text-decoration: underline;
@@ -973,7 +974,7 @@ div.footnote .page-entry,
 div.footnote .page-archive,
 div.footnote .page-category-category_name,
 div.footnote .page-entries-year-month-day {
-  border-top: 1px solid #cccccc;
+  border-top: 1px solid #ccc;
 }
 /* コメント */
 .comment-box {
@@ -1020,12 +1021,12 @@ div.footnote .page-entries-year-month-day {
 }
 .comment-metadata {
   font-size: 0.382rem;
-  color: #999999;
+  color: #999;
   margin: 0;
   padding-bottom: 14px;
 }
 .comment-metadata a {
-  color: #999999;
+  color: #999;
 }
 .leave-comment-title {
   display: inline-block;
@@ -1034,8 +1035,8 @@ div.footnote .page-entries-year-month-day {
   padding: 4px 10px 4px;
   margin-bottom: 0;
   line-height: 18px;
-  color: #333333;
-  background-color: #ffffff;
+  color: #333;
+  background-color: #fff;
   text-align: center;
   vertical-align: middle;
   border-top-right-radius: 2px;
@@ -1068,10 +1069,10 @@ div.footnote .page-entries-year-month-day {
   font-weight: bold;
   margin-bottom: 8px;
   font-size: 1.18rem;
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #ccc;
 }
 .hatena-module-title a {
-  color: #333333;
+  color: #333;
   text-decoration: none;
 }
 .hatena-module-title a:hover {
@@ -1137,7 +1138,7 @@ div.footnote .page-entries-year-month-day {
   font-weight: bold;
 }
 .my-module-profile .id-and-button .id a {
-  color: #333333;
+  color: #333;
 }
 .my-module-profile .id-and-button .hatena-follow-button-box {
   display: inline !important;
@@ -1231,7 +1232,7 @@ div.footnote .page-entries-year-month-day {
 }
 /* Search module */
 .hatena-module.hatena-module-search-box .search-form {
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
@@ -1245,7 +1246,7 @@ div.footnote .page-entries-year-month-day {
 }
 .hatena-module.hatena-module-search-box .search-module-input {
   padding: 5px;
-  color: #333333;
+  color: #333;
   background: none;
   border: none;
   outline: none;
@@ -1274,7 +1275,7 @@ div.footnote .page-entries-year-month-day {
   margin-bottom: 0.382rem !important;
 }
 #blog-title .searchbox-htn .search-form {
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
@@ -1289,7 +1290,7 @@ div.footnote .page-entries-year-month-day {
 }
 #blog-title .searchbox-htn .search-module-input {
   padding: 5px;
-  color: #333333;
+  color: #333;
   background: none;
   border: none;
   outline: none;
@@ -1360,7 +1361,7 @@ div.footnote .page-entries-year-month-day {
 #footer {
   padding: 30px 0;
   text-align: center;
-  color: #999999;
+  color: #999;
   line-height: 1.5;
   font-size: 80%;
 }
@@ -1368,7 +1369,7 @@ div.footnote .page-entries-year-month-day {
   margin: 0;
 }
 #footer a {
-  color: #999999;
+  color: #999;
 }
 /* About ページ
 -------------------------------------------------- */
