@@ -1,82 +1,70 @@
 // LESS Variables
 
-/*  -background color  */
+/* width
+-------------------------------------------------- */
+@width_total: 1000px;
+@width_contents_padding_right_left: 20px;
+
+/* hatena-modules
+-------------------------------------------------- */
+@columns: 3;
+
+/* background color
+-------------------------------------------------- */
 @background: #fff;
 @bg-light: #f5f5f5;
-@bg-quote: #f7fbfc;    // quote
+@bg-quote: #deecf3;    // quote
 
-/*  -text color        */
+/*  text color
+-------------------------------------------------- */
 @text: #333;
 @text-light: #999;
 @text-header: #1c1c1c; // h1~h6
 
-/*  -link text color   */
+/*  link text color
+-------------------------------------------------- */
 @link: #1487bd;
 @hover: #0f5373;
 @visited: #789dae;
 
-/*  -border color      */
+/*  border color
+-------------------------------------------------- */
 @border: #ccc;
+@border-quote: #dee1e2;
 
-/*  -button background */
+/*  button background
+-------------------------------------------------- */
 @btn: #fff;
 @btn-hover: #f5f5f5;
 
-/*  -font size         */
+/*  font size
+-------------------------------------------------- */
+/* contents */
 @size: 16px;
+@line-height: 1.618rem;
 
-@size-level1: 5.0rem;     // @size * 5
-@size-level2: @size-level1 * 0.618;
-@size-level3: @size-level1 * 0.382;
-@size-level4: @size-level1 * 0.236;
-@size-level5: @size-level1 * 0.090;
-@size-level6: @size-level1 * 0.090; // maybe <h6> is rarely used...
+/* header (title) */
+@size-level0: 5.0rem;   // @size * 5 (only use the blog title)
+@size-level1: @size-level0 * 0.618;
+@size-level2: @size-level0 * 0.382;
+@size-level3: @size-level0 * 0.236;
+@size-level4: @size;    // maybe <4><h5> and <h6> is rarely used...
+@size-level5: @size;    // maybe <4><h5> and <h6> is rarely used...
+@size-level6: @size;    // maybe <4><h5> and <h6> is rarely used...
 
 @size-small1: 0.618rem;
 @size-small2: 0.382rem;
+@size-code: @size;
+/* -----------------------------------------------
+   Modular Scale
+   http://www.modularscale.com/
+     1:1.618  Golden Ratio
+     5:6      Minor Third
+   ---------------------------------------------- */
 
-/* ----------------------
-Modular Scale
-  http://modularscale.com/scale/?px1=15&px2=75&ra1=1.618&ra2=0
-  16px @ 1:1.618 (*)
-  80px @ 1:1.618
----------------------- */
 
-// | Pixels  | Ems      | Ems @ 16 | % of 13   |
-// | ---     | ---      | ---      | ---       |
-// | 887.120 |   55.445 | 55.445   | 6,824.000 |
-// | 751.538 | * 46.971 | 46.971   | 5,781.062 |
-// | 548.282 |   34.268 | 34.268   | 4,217.554 |
-// | 464.486 | * 29.03  | 29.03    | 3,572.969 |
-// | 338.864 |   21.179 | 21.179   | 2,606.646 |
-// | 287.074 | * 17.942 | 17.942   | 2,208.262 |
-// | 209.434 |   13.09  | 13.09    | 1,611.031 |
-// | 177.425 | * 11.089 | 11.089   | 1,364.808 |
-// | 129.440 |   8.09   | 8.09     | 995.692   |
-// | 109.657 | * 6.854  | 6.854    | 843.515   |
-// | 80.000  |   5      | 5        | 615.385   |
-// | 67.773  | * 4.236  | 4.236    | 521.331   |
-// | 49.444  |   3.09   | 3.09     | 380.338   |
-// | 41.887  | * 2.618  | 2.618    | 322.208   |
-// | 30.559  |   1.91   | 1.91     | 235.069   |
-// | 25.888  | * 1.618  | 1.618    | 199.138   |
-// | 18.887  |   1.18   | 1.18     | 145.285   |
-// | 16.000  | * 1      | 1        | 123.077   |
-// | 11.673  |   0.73   | 0.73     | 89.792    |
-// | 9.889   | * 0.618  | 0.618    | 76.069    |
-// | 7.214   |   0.451  | 0.451    | 55.492    |
-// | 6.112   | * 0.382  | 0.382    | 47.015    |
-// | 4.459   |   0.279  | 0.279    | 34.300    |
-// | 3.778   | * 0.236  | 0.236    | 29.062    |
-// | 2.756   |   0.172  | 0.172    | 21.200    |
-// | 2.335   | * 0.146  | 0.146    | 17.962    |
-// | 1.703   |   0.106  | 0.106    | 13.100    |
-// | 1.443   | * 0.09   | 0.09     | 11.100    |
-// | 1.053   |   0.066  | 0.066    | 8.100     |
-
-/*  -misc.             */
+/*  misc.
+-------------------------------------------------- */
 @size-archive: 12px;
-
 @searchbox-size-coefficient: 1.5;
-
-@indent-contents: 0.618rem;
+@profile-icon-size: 48px;

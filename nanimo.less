@@ -6,7 +6,7 @@
     はてな提供の、boilerplate がベース。
     vim プラグインの previm が生成する html ページにインスパイアされてます。
     - [hatena/Hatena-Blog-Themes] (git@github.com:hatena/Hatena-Blog-Themes.git)
-    - [kannokanno/previm ](git@github.com:kannokanno/previm.git)
+    - [kannokanno/previm] (git@github.com:kannokanno/previm.git)
   Licensed under the MIT license.
 */
 
@@ -19,40 +19,120 @@
 @import "less/_variable.less";
 
 
+
 /* Common
 -------------------------------------------------- */
 
 html,
 body {
-    font-family:"Apple TP","Helvetica Neue","Helvetica","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Arial","Verdana","sans-serif";
-
+    font-family: "Hiragino Sans", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", Meryo, "メイリオ","ＭＳ Ｐゴシック","Helvetica Neue","Helvetica","Arial",sans-serif;;
     color: @text;
     background-color: @background;
 
     font-size: @size;   /* Scale Origin (Ideal text size) */
+    font-weight: 300;
 }
 
 .clearboth { clear: both; }
 
 /* Header */
 
-h1 { font-size: @size-level1; } /* Scale Origin (Important number) */
-h2 { font-size: @size-level2; }
+h1 {
+    font-size: @size-level1;
+
+    /* ブログ タイトル */
+    #blog-title & {
+        .page-index & {
+            font-size: @size-level0;
+        }
+        .page-entry &,
+        .page-archive & {
+            font-size: @size-small1;
+            font-weight: normal;
+        }
+    }
+
+    /* 各エントリーのタイトル */
+    &.entry-title {
+        .page-index &,
+        .page-entry & {
+            font-size:  @size-level1;
+        }
+        .page-archive & {
+            font-size:  @size-level1;
+        }
+    }
+}
+h2 {
+    font-size: @size-level2;
+
+    /* ブログの説明 */
+    .page-index &#blog-description {
+        font-size: @size-small1;
+        font-weight: normal;
+    }
+    .page-entry &,
+    .page-archive & {
+        &#blog-description {
+            font-size: @size-small1;
+            font-weight: normal;
+        }
+    }
+
+}
 h3 { font-size: @size-level3; }
 h4 { font-size: @size-level4; }
 h5 { font-size: @size-level5; }
 h6 { font-size: @size-level6; }
 
+// ヘッダータグのレイアウトに関する設定
 h1,h2,h3,h4,h5,h6 {
     margin: 0;
     padding: 0;
+}
+h1 {
+    &.entry-title {
+        line-height:    1.1em;  // @line-height は使用しない
+        letter-spacing: 0.01em;
+    }
+}
+h1,h2 {
+    .entry-content & {
+        line-height:    1.1em;  // @line-height は使用しない
+        letter-spacing: -0.03em;
+    }
+}
+h1 {
+    .page-entry { /*★*/ }
+}
+h1,h2,h3,h4,h5,h6 {
+    padding-top: .25em;
+    padding-bottom: .25em;
 
+    .entry-content & + & {
+        padding-top: 1em;
+    }
+    .entry-content p + &,
+    .entry-content pre + &,
+    .entry-content blockquote + &,
+    .entry-content table + & {
+        padding-top: 2em;
+    }
+    // ref. http://wp-e.org/2014/05/20/2420/
+    // 本文中のタイトル (hタグ) は，本文 1 行目で使用されるケース以外，
+    // 上下に間隔を設ける．
+    // 本文中 1 行目でいきなりタイトル挿入の場合は，上側の間隔は抑制，
+    // 下にのみセットするよう制御．
+}
+
+// ヘッダータグのテキスト色に関する設定
+h1,h2,h3,h4,h5,h6 {
     color: @text-header;
 }
 
 
-/* Anchor */
 
+/* Anchor */
 a {
     color: @link;
     text-decoration: none;
@@ -62,24 +142,40 @@ a {
     &:visited {
         color: @visited;
     }
-
-    // of header
-    h1 &,h2 &,h3 &,h4 &,h5 &,h6 & {
-
+}
+h1,h2,h3,h4,h5,h6 {
+    & a {
         color: @text-header;
-        text-decoration: none;
 
-        &:hover{
-            color: @hover !important;
-            text-decoration: none;
+        &:hover {
+            color: @hover;
         }
         &:visited {
             color: @text-header;
-            text-decoration: none;
         }
     }
 }
+.hatena-module {
+    & a {
+        color: @text;
+        &:hover {
+            color: @hover;
+        }
+        &:visited {
+            color: @text-header;
+        }
+    }
 
+    & .hatena-module-title a {
+        color: @text-header;
+        &:hover {
+            color: @hover;
+        }
+        &:visited {
+            color: @text-header;
+        }
+    }
+}
 a.keyword {
     text-decoration: none;
     color: @text;
@@ -147,24 +243,17 @@ a.keyword {
 -------------------------------------------------- */
 
 #container {
-    width: 940px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 30px;
-    padding-top: 37px; // グローバルヘッダを fixed にしているため
+    width: @width_total;
+    margin: 0 auto;         // センタリング
 
-    #content {
-        .clearfix;
-    }
-
-    #top-editarea {
-        .clearfix;
-    }
+    padding-top: 37px;      // グローバルヘッダを fixed にしているため
+    padding-bottom: 30px;
 }
 
 .globalheader-off #container {
-    padding-top: 0; // グローバルヘッダ非表示の時
+    padding-top: 0;         // グローバルヘッダ非表示の時
 }
+
 
 /* one col layout */
 
@@ -175,112 +264,88 @@ a.keyword {
     padding: 3em 0 6em;
 }
 
-#box2 {
+// ブログタイトル以外のコンテンツ部分
+#main {
+    padding:  0;
+    margin:   0;
+
     width: 100%;
-    float: none;
 }
 
-#box2-inner {
-    padding: 84px 0 0;
-    width: 960px;
-    .clearfix;
-    overflow: hidden;
-}
+// プロフィールやリンク等で構成する下部エリア部分
+#box2 {
+    padding: 0;
+    margin:  0;
 
-#box2 .hatena-module {
-    text-align: left;
-    padding-right: 20px;
-    width: 300px;
-    float: left;
+    width: 100%;
 
-    &:nth-child(3n+1) {
-        clear: both;
+    padding: @size-level1 0 @size-level2;
+
+    img{
+        width: @profile-icon-size;
+        height: @profile-icon-size;
+    }
+
+    /* 3 カラム flexbox を使用 */
+    #box2-inner {
+
+        display:-ms-flexbox;
+        display: -webkit-flex;
+        display:flex;
+
+        flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+
+        justify-content:space-between;
+        -webkit-justify-content:space-between;
+        // ref.
+        // (http://scene-live.com/page.php?page=56) [【css】flexbox（フレキシブルボックスレイアウト）で要素を横並びにする方法]
+        // (http://scene-live.com/page.php?page=59) [【CSS】Flexboxのプロパティ（justify-content，align-items，align-self，align-content）を紹介します]
     }
 }
 
 
 
-/* Blog Title
+/* Header
 -------------------------------------------------- */
 
-/* Leyout: page-index */
-.page-index {
-    #blog-title {
-        margin: 0;
-        padding: 48px 0 2rem; // Check for below '#blog-title when (@searchbox-layout-is = 2)'. overwrite at there.
-
-    }
+header {
+    padding:  0;
+    margin:   0;
 }
+/* ブログ タイトル */
+#blog-title {
+    padding:  0;
+    margin:   0;
 
-/* Layout: page-entry    */
-/* Layout: page-archive  */
-/* Layout: page-category */
-.page-entry,
-.page-archive,
-.page-category-category_name,
-.page-entries-year-month-day {
-    #blog-title {
-        margin: 0;
-        padding: 0;
+    .page-index & {
+        padding: @size-level1 0;
 
-        border-bottom: 1px solid @border;
-
-        /* to line up the blog title and breadcrump in a row */ // ブログタイトルとトピックパスを、ヘッダーに 1 行で出力するために
-        #blog-title-inner #title { display: inline; }
-
-    }
-}
-
-/* Font Style: page-index */ // 文字のスタイル関係のみ(レイアウト系の処理はここでは行わない)
-.page-index {
-    #blog-title {
-        text-align: center;
-        /* anchor */
-        a:hover { color: @text-header !important; }
-    }
-}
-
-/* Font Style: page-entry    */
-/* Font Style: page-archive  */
-/* Font Style: page-category */
-.page-entry,
-.page-archive,
-.page-category-category_name,
-.page-entries-year-month-day {
-    #blog-title {
-        /* for setting font size to deliemiter string '>' */
-        font-size: @size-small1 !important;
-
-        #blog-title-inner #title {
-            text-align: left;
-            font-size: @size-small1;
-            font-weight: normal;
-            /* anchor */ // 上述 <h#> の定義そのまま。
+        #title {
+            text-align: center;
         }
     }
-}
+    .page-entry &,
+    .page-archive &,
+    .page-category-category_name &,
+    .page-entries-year-month-day & {
+        margin-bottom: @size-small1;
 
-/* Blog Description: page-index */ // 説明の表示は page-index のみ。他はすべて抑制。
-.page-index #blog-description {
-    margin: 0;
-    padding: 3px 0 42px;
-
-    font-weight: normal;
-    font-size: @size-small1;
-}
-
-/* Blog Description: page-entry    */
-/* Blog Description: page-archive  */
-/* Blog Description: page-category */
-.page-entry,
-.page-archive,
-.page-category-category_name,
-.page-entries-year-month-day {
-    #blog-title {
-        #blog-title-inner #blog-description { display: none; }
+        border-bottom: 1px solid @border;
     }
 }
-
+/* ブログの説明 (index 以外は抑制) */
+#blog-description {
+    .page-index & {
+        text-align: center;
+    }
+    .page-entry &,
+    .page-archive &,
+    .page-category-category_name &,
+    .page-entries-year-month-day & {
+        display: none;
+    }
+}
 /* ヘッダ画像を設定したとき */
 .header-image-enable {
     #title {
@@ -292,65 +357,51 @@ a.keyword {
     }
 
 }
-
-/* パンくず（カテゴリーページで表示されます） */
-#top-box {
-    margin: 10px auto 20px;
-    font-size: 90%;
-
-    .breadcrumb {
-          border: 1px solid @border;
-          padding: 10px;
-    }
-}
+/* パンくず (カテゴリーページで表示されます)→ アーカイブページ で */
 
 
-/* 各エントリー毎
+/* Article (Contents)
 -------------------------------------------------- */
-.entry {
-    position: relative;
-    margin-bottom: 100px;
+article {
+    padding: 0;
+    margin:  0;
+
+    margin-top:    @size-level1;
+    margin-bottom: @size-level1;
 }
+
+/* エントリタイトル */
 .entry-header {
     margin: 0;
     padding: 0;
-    position: relative;    // [編集] ボタン レイアウトの為 必要
+
+    padding-bottom: 1em;    /* 間隔: エントリタイトル - 本文 */
+
+    position: relative;     // [編集] ボタン レイアウトの為 必要
 }
 
-/* タイトル */
-.entry-title {
-    margin: 0;
+/* 日付 */
+.entry-date {
     padding: 0;
-
-    padding: 7px 0;
-
-    font-size: @size-level2;
-    line-height: @size-level2;
-    line-height: 1.1em;
-}
-
-/* 日付 */ // エントリー日付はエントリー最下部へ。エントリーヘッダには出さない。(ref. .entry-date-to-entry-footer、jquery 使って制御)
-.date {
+    margin: 0;
     display: inline-block;
+    // size
     font-size: @size-small1;
-
+    // color
     a {
         color: @text-light;
         text-decoration: none;
     }
 }
-// jquery 導入で効く。エントリー日付はエントリーフッターへ。
-.entry-date-tofooter .date a:hover {
-    text-decoration: underline;
-}
 
-/* カテゴリ */
+/* カテゴリ (タグ) */
+.entry-categories,
 .categories {
-    padding: 3px 0 1em 3rem;
-    text-indent: -3rem;
-
+    padding: 0;
+    margin: 0;
+    // サイズ
     font-size: @size-small1;
-
+    // フォント色
     a {
         color: @text-light;
 
@@ -361,6 +412,7 @@ a.keyword {
         margin: 0;  // カテゴリー無いとき ...?
     }
 }
+
 
 /* 「編集する」ボタン */
 .entry-header-menu {
@@ -374,62 +426,42 @@ a.keyword {
 
 /* コンテンツ本文 */
 .entry-content {
-    /* font-size: @size; */ // Common in above
-    line-height: 1.618rem;
+    line-height: @line-height;
 
     padding: 0;
-    padding: 14px 0 28px;
+    padding: @line-height @width_contents_padding_right_left;
+    /* 幅について ;
+         全体 = 1000px
+         本文 =  960px
+       1000px = 20px(左余白) + 960px + 20px(右余白)
 
-    .page-entry,
-    .page-archive,
-    .page-category-category_name,
-    .page-entries-year-month-day {
-        border-bottom: 1px solid @border;
-    }
+       本文幅 960px は，この .entry-content で行っている．
+     */
 
     p {
-        /*  ぶら下げインデント 調整 h# のマイナス margin は止める */
-        padding-left: @indent-contents;
+        margin: 0;  /* clear the user agent stylesheet */
+        padding: 0; /* clear the user agent stylesheet */
+
+    }
+
+    img,
+    ol, ul,
+    table,
+    blockquote,
+    pre
+    {
+        margin: 0;
+        margin: @line-height/2 0;
     }
 
     img {
         max-width: 100%;
     }
-
-    h1,h2,h3,h4,h5,h6 {
-        /* ぶら下げインデント 調整 h# のマイナス margin は止める
-        margin-left: -.382em;
-        margin-right: -.382em;
-        */
-
-        margin-bottom: 0;
-
-        /* line-height: 2.618rem; */
+    ol, ul {
+        padding: 0; /* clear the user agent stylesheet */
+        padding-left: 2rem;
     }
-
-    h2 {
-        font-size: @size-level2;
-        margin-top: 6.854rem;
-        line-height: 1em;
-    }
-    h3 {
-        font-size: @size-level3;
-        margin-top: 4.236rem;        // @size 基準
-    }
-    h4 {
-        font-size: @size-level4;
-        margin-top: 2.618rem;       // @size 基準
-    }
-    h5 {
-        font-size: @size-level5;
-        margin-top: 1.618rem;       // @size 基準
-    }
-    // maybe <h6>  is rarely used...
-    h6 {
-        font-size: @size-level6;
-        margin-top: 1.618rem;       // @size 基準
-    }
-
+    // テーブル
     table {
         border-collapse: collapse;
         border-spacing: 0;
@@ -438,18 +470,23 @@ a.keyword {
         img {
             max-width: none;
         }
+
+        margin-left:  auto;
+        margin-right: auto;
     }
 
     table th,
     table td {
         border: 1px solid #ddd;
+        border: 1px solid @border;
         padding: 5px 10px;
     }
 
     table th {
         background: @bg-light;
+        background: #dcdcdc;
     }
-
+    // 引用
     blockquote:before {
         position: absolute;
         content: open-quote;
@@ -457,7 +494,7 @@ a.keyword {
         font-weight: normal;
         color: @text-light;
         top: @size;
-        left: 8px;
+        left: 6px;
     }
     blockquote:after {
         position: absolute;
@@ -466,46 +503,36 @@ a.keyword {
         font-weight: normal;
         color: @text-light;
         bottom: - @size;
-        right: 8px;
+        right: 6px;
     }
     blockquote {
         position: relative;
         quotes: "“" "”";
-        margin: 0 0 10px;
+        // margin: 0 0 10px;
         padding: @size (@size * 2);
+
         background-color: @bg-quote;
+        border: 1px solid @border-quote;
         p {
             margin-top: 0;
             margin-bottom: 0;
         }
     }
-
-    pre, code {
-        font: @size Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    }
+    // コード
     pre {
-        margin: 0 0 10px;
-        margin-left: @indent-contents;
-        padding: 20px;
-        padding: 6px 10px;
-        padding: 1rem 10px;
-        white-space: pre;
-
         border-radius: 3px;
-    }
-    pre>code {
-        margin: 0;
-        padding: 0;
         white-space: pre;
-        border: 0;
-        background: transparent;
     }
+
+    code, .code {
+        font-family: "Bitstream Vera Sans Mono","Courier",monospace;
+    }
+
     code {
         margin: 0 .1em;
         padding: 0 .2em;
-        border: 1px solid #eaeaea;
+        border: 1px solid #d2d2d2;
     }
-
 
     h2 code { font-size: @size-level2; }
     h3 code { font-size: @size-level3; }
@@ -513,10 +540,14 @@ a.keyword {
     h5 code { font-size: @size-level5; }
     h6 code { font-size: @size-level6; }
 
-    .code {
-        /* background-color: #f8f8f8; */
+    pre.code {
+        padding: 1em;
         background-color: #383838;
-        color: #fff;
+        color: #f2f2f2;
+
+        font-size: @size-code;
+
+        line-height: 1.1em;
     }
 
     .hatena-asin-detail {
@@ -533,10 +564,10 @@ a.keyword {
 
 /* フッター */
 .entry-footer {
-    margin-top: 1px;    // 各エントリ、フッタ部に出力した日付との間隔
+    margin-top: 1px;    // 各エントリ，フッタ部に出力した日付との間隔
 }
 .entry-footer-section {
-    /* wont use username and time. */
+    /* コンテンツ下部のユーザ名および日付情報は不要．表示を抑制． */
     .author.vcard, .entry-footer-time { display: none; }
 
     margin: 0;
@@ -547,7 +578,6 @@ a.keyword {
     a {
         color: @text-light;
     }
-    .entry-date-to-entry-footer a:hover { text-decoration: underline; }
 }
 
 /* entried date, hide in .page-index only */
@@ -558,25 +588,31 @@ a.keyword {
     margin: 10px 0;
 }
 
-/* Footnote */
+/* 脚注 */
 div.footnote {
-    padding: 35px 13px 0;
-    .page-index {
-        border-top: none;
-    }
-    .page-entry,
-    .page-archive,
-    .page-category-category_name,
-    .page-entries-year-month-day {
-        border-top: 1px solid @border;
-    }
+    margin:  0;
+    padding: @line-height*2 0 0;
+
     font-size: @size-small1;
+
+    p.footnote {
+        padding: 0;
+        margin:  0;
+
+        padding-bottom: @size-small1;
+
+        line-height: @size-small1*1.2;
+
+        // ぶら下がり hanging インデント
+        padding-left: 2em+2.1em; // 20px + 1em(9.88333px)*4
+        text-indent: -2.2em;
+    }
 }
 
 /* コメント */
 .comment-box {
 
-    padding: 68px 20px 0;
+    padding: @line-height*2 @width_contents_padding_right_left;
 
     ul {
         list-style: none;
@@ -633,165 +669,161 @@ div.footnote {
 
 .leave-comment-title {
     .btn;
+
+    color: @text-light;
+    &:hover {
+        color: @text;
+    }
 }
 
 /* Side Bar
 -------------------------------------------------- */
-#box2 {
-    font-size: 85%;
-    line-height: 1.5;
-}
-
-.hatena-module {
-    margin-bottom: 60px;
-}
-
 .hatena-module-title {
     font-weight: bold;
     margin-bottom: 8px;
-    font-size: @size-level4;
-    a {
-        color: @text;
-        text-decoration: none;
-        &:hover {
-            text-decoration: underline;
-        }
-    }
+    font-size: @size-level3;
+
+    /* フォント色は，上述 Anchor の .hatena-module にて */
 
     border-bottom: 1px solid @border;
 }
 
-/* Profile module */
-
-#box2 img {
-    width:48px;
-    height:48px;
-}
-
-.hatena-module-body {
-    padding-left: 12px;
+// フォント
+.hatena-module {
     font-size: @size-small1;
 }
+// レイアウト
+.hatena-module {
+    padding:0;
+    margin: 0;
 
-.hatena-module-profile {
+    /* 3 カラム */
+    width: floor(@width_total/@columns)-(@columns*(@columns+1));
+    margin-bottom: @line-height;
 
-    .profile-icon {
-        .border-radius(50%);
+    &.hatena-module-profile,
+    &.hatena-module-search-box,
+    &.hatena-module-links,
+    &.hatena-module-recent-entries,
+    &.hatena-module-archive,
+    &.hatena-module-circles,
+    &.hatena-module-category {
+        .hatena-module-body {
+            padding-left: 1em;
+        }
     }
 }
 
-// jquery 導入で効く。プロフィールが 1 カラムで使用。
-.my-module-profile {
-    width: 100% !important;     /* kill the style of hatena-module */
-    padding: 0 !important;      /* kill the style of hatena-module */
-    padding: 36px 0 !important; /* kill the style of hatena-module */
-    margin: 0 !important;       /* kill the style of hatena-module */
 
-    .hatena-module-body {
-        padding: 24px 0 24px;
-    }
+/* プロフィール */
+.hatena-module-profile {
+    // アイコンの形状は丸に
     .profile-icon {
-        display: block;
         .border-radius(50%);
+    }
+    .profile-icon-link {
+        display: block;
+
+        width:  @profile-icon-size;
+        height: @profile-icon-size;
         margin: 0 auto;
     }
-    .profile-description {
-        padding: 0 12px;
-        font-size: @size-small1;
+    .id {
+        display: inline-block;
+        width:100%;
         text-align: center;
-        padding: 0 35%;
-        p{
-            margin-top: 0;
-        }
+        // ref;
+        // http://www.dafuku.com/2014/03/span-css-align-center.html
     }
-    .id-and-button {
-        position: relative;
-        padding: 0px;
-        margin: 5px 0;
-
-        .id {
-            display: inline;
-            font-size: @size-small1;
-            font-weight: bold;
-            a { color: @text; }
+    .profile-description {
+        p {
+            padding:  0;
+            margin:   0;
         }
+        width: floor(@width_total/3);
+        margin: 0 auto;
 
-        .hatena-follow-button-box {
-            display: inline !important;
-            text-align: center !important;
+        text-align: center;
+    }
+    .hatena-follow-button-box {
+        text-align: center;
 
-            // 兎に角! [読者になる] ボタンのビジュアル効果が本当に邪魔で邪魔でならない!
-            .hatena-follow-button {
-                display: initial !important;
-                float: none !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                height: initial !important;
-                border: none !important;
+        .hatena-follow-button {
 
-                font-size: @size;
-                line-height: initial !important;
+            padding: 0;
+            margin:  0;
 
-                .transition(0, none) !important;
-                .transition-duration(0) !important;
+            padding: 0 .5em;
 
-                &.subscribing,
-                &.unsubscribing {
-                    background: none !important;
-                    float: none !important;
-                    margin: 0 !important;
-                    padding: 0 !important;
-                    font-weight: normal;
-                    &:hover {
-                        color: @hover !important;
-                        border: none !important;
-                        background: none !important;
-                /* do NOT need hover {{ */
-                        .foreground { display: inline !important; }
-                        .background { display: none !important; }
-                    }
-                }
-                .background { display: none !important; }
-                /* }} do NOT need hover */
-            }
-            &:after {
-                content: initial !important;
-            }
+            float: none;
         }
-        .subscription-count-box {
-            float: none !important;
-            display: inline-block !important;
-            .subscription-balloon { display: none !important; }
-            .subscription-count {
-                padding: 0 !important;
-                display: inline !important;
-                float: none !important;
-                text-align: center;
-                border: none !important;
-                &:before {
-                    content: " (";
-                }
-                &:after {
-                    content: ")";
-                }
-            }
-        }
-
     }
 }
 
+/* 検索 */
+.hatena-module-search-box {
+    padding: 0;
+    margin:  0;
+
+    @search-button-size: 32px;
+
+    .search-form {
+        border: 1px solid @border;
+
+        .border-radius(3px);
+
+        // 入力フィールド
+        .search-module-input {
+            padding: 0;
+            margin:  0;
+
+            width: @width_total/3 - @search-button-size*2.2;
+
+            padding: .25em;
+            color: @text;
+            background: none;
+            border: none;
+            outline: none;
+
+            font-size: 1rem;
+        }
+        // 検索ボタン
+        .search-module-button  {
+            padding: 0;
+            margin:  0;
+
+            width:  @search-button-size;
+            height: @search-button-size;
+            margin: auto auto;
+            background: transparent url(http://blog.hatena.ne.jp/images/theme/search.png) no-repeat center center;
+            border: none;
+            text-indent: -9999px;
+
+            .opacity(.55);
+            &:hover {
+                .opacity(.95);
+            }
+        }
+    }
+}
+
+
 /* urllist module
-    リンク・最新記事・最近のコメント・月別アーカイブ・カテゴリモジュールは .hatena-urllist という共通の class が振られます
-*/
+リンク・最新記事・最近のコメント・月別アーカイブ・カテゴリモジュールは .hatena-urllist という共通の class が振られます
+ */
 
 .hatena-urllist {
     list-style: none;
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
+
+    margin:  0;
+    padding: 0;
+
+    .archive-module-year {
+        line-height: @line-height;
+    }
 
     li {
-        padding: 2px 0;
-        line-height: 1.5;
+        line-height: @line-height;
 
         a {
             text-decoration: none;
@@ -799,88 +831,6 @@ div.footnote {
 
         .urllist-item-inner.recent-entries-item-inner {
             .ellipsis(100%);
-        }
-    }
-
-}
-
-/* Search module */
-
-.hatena-module.hatena-module-search-box {
-    .search-form {
-        border: 1px solid @border;
-        .border-radius(3px);
-        width: 100%;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        position: relative;
-
-    }
-
-    .search-module-input {
-        padding: 5px;
-        color: @text;
-        background: none;
-        border: none;
-        outline: none;
-        height: 20px;
-        width: 90%;
-    }
-
-    .search-module-button {
-        width: 20px;
-        height: 20px;
-        background: transparent url(http://blog.hatena.ne.jp/images/theme/search.png) no-repeat right center;
-        border: none;
-        outline: none;
-        text-indent: -9999px;
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        .opacity(.5);
-        &:hover {
-            .opacity(.85);
-        }
-    }
-}
-
-/* Search module > customized */
-
-#blog-title .searchbox-htn {
-    .hatena-module { margin-bottom: @size-small2 !important }
-    .search-form {
-        border: 1px solid @border;
-        .border-radius(3px);
-        width: 25%;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        position: relative;
-
-        margin-left: auto;
-    }
-    .search-module-input {
-        padding: 5px;
-        color: @text;
-        background: none;
-        border: none;
-        outline: none;
-        height: 20px;
-        width: 90%;
-    }
-
-    .search-module-button {
-        width: 20px;
-        height: 20px;
-        background: transparent url(http://blog.hatena.ne.jp/images/theme/search.png) no-repeat right center;
-        border: none;
-        outline: none;
-        text-indent: -9999px;
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        .opacity(.5);
-        &:hover {
-            .opacity(.85);
         }
     }
 
@@ -918,11 +868,13 @@ div.footnote {
 /* フッタ
 -------------------------------------------------- */
 #footer {
-    padding: 30px 0;
+    padding: 1rem 0 3rem;
+
     text-align: center;
     color: @text-light;
-    line-height: 1.5;
-    font-size: 80%;
+
+    // font-size: 80%;
+    font-size: @size-small1;
 
     p {
         margin: 0;
@@ -931,7 +883,6 @@ div.footnote {
     a {
         color: @text-light;
     }
-
 }
 
 
@@ -953,39 +904,72 @@ div.footnote {
 }
 
 
+
 /* Archive ページ
 -------------------------------------------------- */
-body.page-archive {
-    font-size: 12px;
-}
 .page-archive {
+    padding: 0;
+    margin:  0;
+
     .archive-entries {
+        padding: 0;
+        margin:  0;
 
-        .archive-entry {
-            margin-bottom: 3em;
+        /* 年月アーカイブ と カテゴリアーカイブページ のコンテンツ上辺位置を揃えたい (カテゴリが複数行になったらアレですが */
+        padding-top: 1rem;
+        .page-archive-category& {
+            padding-top: 0;
         }
+    }
 
-        .entry-title {
-            font-size: @size-level3;
-            padding: 0;
+    /* 各エントリの間隔は padding-top で調整 */
+    .archive-entry {
+        padding: 0;
+        margin:  0;
+
+        padding: @size-level1 0 0;
+    }
+
+    .archive-entry-body {
+        padding: 0;
+        margin:  0;
+
+        padding: 0 @width_contents_padding_right_left;
+    }
+
+    p {
+        padding: 0;
+        margin:  0;
+
+        padding-bottom: 1rem;
+    }
+    .date {
+        padding: 0;
+        margin: 0;
+        // size
+        font-size: @size-small1;
+        // color
+        a {
+            color: @text-light;
+            text-decoration: none;
         }
+        display: none;
+    }
 
-        .categories {
-            margin: 0 0 .5em;
-            font-size: @size-small1;
-        }
+    /* カテゴリーページのみ */
+    // トピックパス
+    #top-box {
+        padding:0;
+        margin: 0;
 
-        .entry-description {
-            margin: 0 0 1em;
-            line-height: 1.7em;
-            font-size: @size;
-        }
+        font-size: @size-small1;
 
-        .date {
-            display: none;
+        .breadcrumb {
+            // nothing...
         }
     }
 }
+
 
 /*  import media queries */
 @import "less/_media-queries.less";

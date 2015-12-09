@@ -13,10 +13,54 @@
 @import "less/_variable.less";
 
 
+/*** プロフィールと検索を 1 カラムにする ***/
+.hatena-module-profile,
+.hatena-module-search-box {
+    // 1 カラム
+    width: 100% !important;
+    // タイトルは表示しない
+    .hatena-module-title {
+        display: none;
+    }
+}
+// プロフィール (付け足し)
+.hatena-module-profile {
+    padding: @size-level1 0 1em !important;
+
+    // 左余白を削除
+    .hatena-module-body {
+        padding: 0 !important;
+        margin:  0 !important;
+    }
+}
+// 検索 (付け足し)
+.hatena-module-search-box {
+    padding: @size-level1 0 @size-level1 * 3 !important;
+
+    @search-button-size: 32px;
+    padding-left: (@search-button-size*1.4)/2 !important;  /* 微調整: ボタンの幅の分，右へシフト */
+
+    .hatena-module-body {
+        padding: 0 !important;
+        margin:  0 !important;
+    }
+    .search-form {
+        width: @width_total/3 + @search-button-size*1.4;
+        margin: 0 auto;
+        // 入力フィールド
+        .search-module-input {
+            width: @width_total/3 !important;
+        }
+        // 検索ボタン
+        .search-module-button  {
+        }
+    }
+}
+
 /*** description of references ***/
 .entry .via,
 .entry .viacode {
-  font-size: .5rem;
+  font-size: @size-small1;
   text-align: right;
 }
 

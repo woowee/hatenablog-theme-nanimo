@@ -29,23 +29,68 @@
   overflow: hidden;
 }
 /*  import variable */
-/*  -background color  */
-/*  -text color        */
-/*  -link text color   */
-/*  -border color      */
-/*  -button background */
-/*  -font size         */
-/* ----------------------
-Modular Scale
-  http://modularscale.com/scale/?px1=15&px2=75&ra1=1.618&ra2=0
-  16px @ 1:1.618 (*)
-  80px @ 1:1.618
----------------------- */
-/*  -misc.             */
+/* width
+-------------------------------------------------- */
+/* hatena-modules
+-------------------------------------------------- */
+/* background color
+-------------------------------------------------- */
+/*  text color
+-------------------------------------------------- */
+/*  link text color
+-------------------------------------------------- */
+/*  border color
+-------------------------------------------------- */
+/*  button background
+-------------------------------------------------- */
+/*  font size
+-------------------------------------------------- */
+/* contents */
+/* header (title) */
+/* -----------------------------------------------
+   Modular Scale
+   http://www.modularscale.com/
+     1:1.618  Golden Ratio
+     5:6      Minor Third
+   ---------------------------------------------- */
+/*  misc.
+-------------------------------------------------- */
+/*** プロフィールと検索を 1 カラムにする ***/
+.hatena-module-profile,
+.hatena-module-search-box {
+  width: 100% !important;
+}
+.hatena-module-profile .hatena-module-title,
+.hatena-module-search-box .hatena-module-title {
+  display: none;
+}
+.hatena-module-profile {
+  padding: 3.09rem 0 1em !important;
+}
+.hatena-module-profile .hatena-module-body {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.hatena-module-search-box {
+  padding: 3.09rem 0 9.27rem !important;
+  padding-left: 22.4px !important;
+  /* 微調整: ボタンの幅の分，右へシフト */
+}
+.hatena-module-search-box .hatena-module-body {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.hatena-module-search-box .search-form {
+  width: 378.13333333px;
+  margin: 0 auto;
+}
+.hatena-module-search-box .search-form .search-module-input {
+  width: 333.33333333px !important;
+}
 /*** description of references ***/
 .entry .via,
 .entry .viacode {
-  font-size: .5rem;
+  font-size: 0.618rem;
   text-align: right;
 }
 /*** abstracts ***/
